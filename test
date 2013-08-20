@@ -1,0 +1,47 @@
+#!/usr/bin/php
+<?php
+/**
+ * Test loader
+ *
+ * ./test <TestName>
+ *
+ * @file    TimeCleanupCheck.php
+ *
+ * PHP version 5.3.9+
+ *
+ * @author  Yancharuk Alexander <alex@itvault.info>
+ * @date    Сбт Фев 16 17:01:16 2013
+ * @copyright The BSD 3-Clause License.
+ */
+
+use \Veles\AutoLoader;
+use \Veles\Application\iApplication;
+use \Veles\Cache\Cache;
+
+// environment: development, production
+define('ENVIRONMENT', 'development');
+define('BASE_PATH', realpath(__DIR__));
+define('CONFIG_FILE', BASE_PATH . "Settings/$argv[1].ini");
+
+set_include_path(implode(PATH_SEPARATOR,
+	array(
+		BASE_PATH . '/lib',
+		get_include_path()
+	)
+));
+
+setlocale(LC_ALL, 'ru_RU.utf8');
+date_default_timezone_set('Europe/Moscow');
+
+require 'Veles/AutoLoader.php';
+AutoLoader::init();
+Cache::init('APC');
+
+if ($argc < 2) {
+	throw new Exception('Enter classname as parameter!');
+}
+
+$application = "Tests\\$argv[1]";
+
+$application::run();
+$application::showResults();
