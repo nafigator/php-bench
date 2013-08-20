@@ -1,0 +1,3 @@
+[submodule "lib/Veles"]
+	path = lib/Veles
+	url = ../Veles.git
