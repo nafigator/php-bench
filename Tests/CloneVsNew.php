@@ -21,9 +21,12 @@ use \Veles\Tools\CliProgressBar;
  */
 class CloneVsNew extends TestApplication
 {
+	protected static $repeats = 1000;
+
 	final public static function run()
 	{
-		$repeats = 100000;
+		$repeats = self::getRepeats();
+
 		$bar = new CliProgressBar($repeats);
 		for ($i = 0; $i <= $repeats; ++$i) {
 			Timer::start();

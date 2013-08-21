@@ -21,33 +21,34 @@ use \Veles\Tools\CliProgressBar;
  */
 class SelfVsClass extends TestApplication
 {
-    const TEST = 'simple value';
+	const TEST = 'simple value';
+	protected static $repeats = 10000;
 
-    final public static function run()
-    {
-        $a = 0;
-        $repeats = 10000;
-        $bar = new CliProgressBar($repeats);
-        for ($i = 0; $i <= $repeats; ++$i) {
-            Timer::start();
-            $a = self::TEST;
-            Timer::stop();
-            $bar->update($i);
-        }
+	final public static function run()
+	{
+		$a = 0;
+		$repeats = self::getRepeats();
+		$bar = new CliProgressBar($repeats);
+		for ($i = 0; $i <= $repeats; ++$i) {
+			Timer::start();
+			$a = self::TEST;
+			Timer::stop();
+			$bar->update($i);
+		}
 
-        self::addResult('self::TEST', Timer::get());
+		self::addResult('self::TEST', Timer::get());
 
-        $bar = new CliProgressBar($repeats);
+		$bar = new CliProgressBar($repeats);
 
-        $a = 0;
-        Timer::reset();
-        for ($i = 0; $i <= $repeats; ++$i) {
-            Timer::start();
-            $a = SelfVsClass::TEST;
-            Timer::stop();
-            $bar->update($i);
-        }
+		$a = 0;
+		Timer::reset();
+		for ($i = 0; $i <= $repeats; ++$i) {
+			Timer::start();
+			$a = SelfVsClass::TEST;
+			Timer::stop();
+			$bar->update($i);
+		}
 
-        self::addResult('class::TEST', Timer::get());
-    }
+		self::addResult('class::TEST', Timer::get());
+	}
 }
