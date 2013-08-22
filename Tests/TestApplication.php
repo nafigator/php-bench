@@ -70,7 +70,7 @@ class TestApplication extends Application
 		$string = new CliColor;
 
 		printf(
-			"%-10s\t%-15s\t%-10s\t%-15s\n",
+			"%-15s\t%-15s\t%-15s\t%-15s\n",
 			'Test name', 'Repeats', 'Result', 'Performance'
 		);
 
@@ -83,7 +83,7 @@ class TestApplication extends Application
 			$string->setColor($color);
 			$string->setString($value);
 			printf(
-				"%-10s\t%-15s\t%-10s sec\t%-15s\n",
+				"%-15s\t%-15s\t%-15s sec\t%-15s\n",
 				$name, self::getRepeats(), $string, $percent . '%'
 			);
 		}
