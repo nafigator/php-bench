@@ -12,8 +12,8 @@
  */
 namespace Tests;
 
-use \Veles\Application\Application;
-use \Veles\Tools\CliColor;
+use Veles\Application\Application;
+use Veles\Tools\CliColor;
 
 /**
  * Class TestApplication
@@ -30,7 +30,7 @@ class TestApplication extends Application
 	/**
 	 * @param int $repeats
 	 */
-	public static function setRepeats($repeats)
+	final public static function setRepeats($repeats)
 	{
 		static::$repeats = $repeats;
 	}
@@ -38,7 +38,7 @@ class TestApplication extends Application
 	/**
 	 * @return int
 	 */
-	public static function getRepeats()
+	final public static function getRepeats()
 	{
 		return static::$repeats;
 	}
@@ -46,7 +46,7 @@ class TestApplication extends Application
 	/**
 	 * @param array $results
 	 */
-	public static function setResults($results)
+	final public static function setResults($results)
 	{
 		self::$results = $results;
 	}
@@ -54,7 +54,7 @@ class TestApplication extends Application
 	/**
 	 * @return array
 	 */
-	public static function getResults()
+	final public static function getResults()
 	{
 		return self::$results;
 	}
@@ -84,12 +84,12 @@ class TestApplication extends Application
 			$string->setString($value);
 			printf(
 				"%-10s\t%-15s\t%-10s sec\t%-15s\n",
-				$name, self::getRepeats(), $string, $percent . ' %'
+				$name, self::getRepeats(), $string, $percent . '%'
 			);
 		}
 	}
 
-	final public static function getPercentDiff($best, $current)
+	private static function getPercentDiff($best, $current)
 	{
 		$diff = $current - $best;
 		$percent = $best / 100;

@@ -14,11 +14,11 @@
  * @copyright The BSD 3-Clause License.
  */
 
-use \Veles\AutoLoader;
-use \Veles\Application\iApplication;
-use \Veles\Cache\Cache;
-
 // environment: development, production
+use Veles\Application\iApplication;
+use Veles\AutoLoader;
+use Veles\Cache\Cache;
+
 define('ENVIRONMENT', 'development');
 define('BASE_PATH', realpath(__DIR__));
 define('CONFIG_FILE', BASE_PATH . "Settings/$argv[1].ini");
