@@ -18,6 +18,7 @@
 use Veles\Application\iApplication;
 use Veles\AutoLoader;
 use Veles\Cache\Cache;
+use Veles\Cache\Drivers\ApcCache;
 
 define('ENVIRONMENT', 'development');
 define('BASE_PATH', realpath(__DIR__));
@@ -35,7 +36,6 @@ date_default_timezone_set('Europe/Moscow');
 
 require 'Veles/AutoLoader.php';
 AutoLoader::init();
-Cache::init('Memcache');
 
 if ($argc < 2) {
 	throw new Exception('Enter classname as parameter!');
