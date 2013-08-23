@@ -71,7 +71,7 @@ class TestApplication extends Application
 
 		printf(
 			"%-10s\t%-15s\t%-10s\t%-15s\n",
-			'Server', 'Queries count', 'Result', 'Performance'
+			'Test name', 'Repeats', 'Result', 'Performance'
 		);
 
 		foreach ($results as $name => $value) {
