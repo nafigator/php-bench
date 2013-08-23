@@ -39,7 +39,6 @@ class ExtractIdFromMultiDimArr extends TestApplication
 			$result = array_map(function($element) {
 				return $element['ID'];
 			}, $array);
-
 			Timer::stop();
 			$bar->update($i);
 		}
