@@ -79,7 +79,7 @@ class TestApplication extends Application
 				? 'green' : 'red';
 
 			$percent = self::getPercentDiff($results[$best], $value);
-			$value   = number_format($value, 6, ',', '');
+			$value   = number_format($value, 6);
 
 			$string->setColor($color);
 			$string->setString($value);
@@ -98,11 +98,11 @@ class TestApplication extends Application
 		$result  = new CliColor;
 
 		if ($value > 0) {
-			$value = number_format($value, 2, ',', '');
+			$value = number_format($value, 2);
 			$result->setColor('red');
 			$result->setstring("-$value");
 		} else {
-			$value = number_format($value, 2, ',', '');
+			$value = number_format($value, 2);
 			$result->setColor('green');
 			$result->setstring("+$value");
 		}
