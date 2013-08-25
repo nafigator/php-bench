@@ -70,7 +70,7 @@ class TestApplication extends Application
 		$string = new CliColor;
 
 		printf(
-			"%-15s\t%-15s\t%-15s\t%-15s\n",
+			"%-12s\t%-12s\t%-12s\t%-12s\n",
 			'Test name', 'Repeats', 'Result', 'Performance'
 		);
 
@@ -79,28 +79,30 @@ class TestApplication extends Application
 				? 'green' : 'red';
 
 			$percent = self::getPercentDiff($results[$best], $value);
+			$value   = number_format($value, 6, ',', '');
 
 			$string->setColor($color);
 			$string->setString($value);
 			printf(
-				"%-15s\t%-15s\t%-15s sec\t%-15s\n",
-				$name, self::getRepeats(), $string, $percent . '%'
+				"%-12s\t%-12s\t%-12s\t%-12s\n",
+				$name, self::getRepeats(), $string . ' sec', $percent . '%'
 			);
 		}
 	}
 
 	private static function getPercentDiff($best, $current)
 	{
-		$diff = $current - $best;
+		$diff    = $current - $best;
 		$percent = $best / 100;
-		$value = round($diff / $percent, 3);
-
-		$result = new CliColor;
+		$value   = $diff / $percent;
+		$result  = new CliColor;
 
 		if ($value > 0) {
+			$value = number_format($value, 2, ',', '');
 			$result->setColor('red');
 			$result->setstring("-$value");
 		} else {
+			$value = number_format($value, 2, ',', '');
 			$result->setColor('green');
 			$result->setstring("+$value");
 		}
