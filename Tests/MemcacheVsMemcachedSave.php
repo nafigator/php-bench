@@ -16,8 +16,8 @@ namespace Tests;
 use Veles\Tools\CliProgressBar;
 use Veles\Tools\Timer;
 use Veles\Cache\Cache;
-use Veles\Cache\Drivers\MemcacheAdapter;
-use Veles\Cache\Drivers\MemcachedAdapter;
+use Veles\Cache\Adapters\MemcacheAdapter;
+use Veles\Cache\Adapters\MemcachedAdapter;
 
 /**
 * Class MemcacheVsMemcachedSave
