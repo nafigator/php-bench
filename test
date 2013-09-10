@@ -15,14 +15,9 @@
  */
 
 // environment: development, production
-use Veles\Application\iApplication;
 use Veles\AutoLoader;
-use Veles\Cache\Cache;
-use Veles\Cache\Drivers\ApcCache;
 
-define('ENVIRONMENT', 'development');
 define('BASE_PATH', realpath(__DIR__));
-define('CONFIG_FILE', BASE_PATH . "Settings/$argv[1].ini");
 
 set_include_path(implode(PATH_SEPARATOR,
 	array(
