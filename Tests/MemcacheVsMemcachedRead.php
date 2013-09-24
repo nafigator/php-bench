@@ -15,6 +15,7 @@ namespace Tests;
 
 use Veles\Tools\CliProgressBar;
 use Veles\Tools\Timer;
+use Application\TestApplication;
 use Veles\Cache\Cache;
 use Veles\Cache\Adapters\MemcacheAdapter;
 use Veles\Cache\Adapters\MemcachedAdapter;

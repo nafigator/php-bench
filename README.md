@@ -20,7 +20,7 @@ Tools for benchmark PHP algorithms.
 
 	./test <Class>
 
-**Class** - class name from Tests directory (except TestApplication).
+**Class** - class name from Tests directory.
 
 ###Examples:
 

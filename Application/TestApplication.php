@@ -10,13 +10,14 @@
  * @date    Сбт Фев 16 17:01:16 2013
  * @copyright The BSD 3-Clause License.
  */
-namespace Tests;
+
+namespace Application;
 
 use Veles\Application\Application;
 use Veles\Tools\CliColor;
 
 /**
- * Class TestApplication
+ * Class \TestApplication
  * @package Classes
  */
 class TestApplication extends Application
