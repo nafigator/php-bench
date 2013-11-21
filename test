@@ -38,5 +38,6 @@ if ($argc < 2) {
 
 $application = "Tests\\$argv[1]";
 
+$application::testDependencies();
 $application::run();
 $application::showResults();

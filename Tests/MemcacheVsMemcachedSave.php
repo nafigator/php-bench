@@ -26,6 +26,9 @@ use Veles\Cache\Adapters\MemcachedAdapter;
 */
 class MemcacheVsMemcachedSave extends TestApplication
 {
+	protected static $class_dependencies = array('Memcache', 'Memcached');
+	protected static $ext_dependencies = array('Memcache', 'Memcached');
+
 	protected static $repeats = 10000;
 
 	final public static function run()

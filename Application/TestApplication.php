@@ -17,15 +17,19 @@ use Veles\Application\Application;
 use Veles\Tools\CliColor;
 
 /**
- * Class \TestApplication
- * @package Classes
+ * Class TestApplication
+ *
+ * @author  Yancharuk Alexander <alex@itvault.info>
  */
 class TestApplication extends Application
 {
-	/**
-	 * @var array Results array
-	 */
+	/** @var array Results array */
 	private static $results = array();
+	/** @var array Class names of dependencies */
+	protected static $class_dependencies = array();
+	/** @var array Extension dependencies */
+	protected static $ext_dependencies = array();
+	/** @var int Test repeats */
 	protected static $repeats = 10000;
 
 	/**
@@ -61,6 +65,31 @@ class TestApplication extends Application
 	}
 
 	/**
+	 * Test dependencies
+	 */
+	final public static function testDependencies()
+	{
+		$errors = '';
+		foreach (static::$class_dependencies as $class_name) {
+			if (class_exists($class_name)) continue;
+			$errors .= sprintf(
+				"%-12s%-20s%-10s\n", 'Class', $class_name, 'not found!'
+			);
+		}
+
+		foreach (static::$ext_dependencies as $ext_name) {
+			if (extension_loaded($ext_name)) continue;
+			$errors .= sprintf(
+				"%-12s%-20s%-10s\n", 'Extension', $ext_name, 'not loaded!'
+			);
+		}
+
+		if ('' === $errors) return;
+
+		throw new DependencyException($errors);
+	}
+
+	/**
 	 * Display results
 	 */
 	final public static function showResults()
@@ -71,7 +100,7 @@ class TestApplication extends Application
 		$string = new CliColor;
 
 		printf(
-			"%-12s\t%-12s\t%-12s\t%-12s\n",
+			"%-16s%-16s%-16s%-16s\n",
 			'Test name', 'Repeats', 'Result', 'Performance'
 		);
 
@@ -85,12 +114,19 @@ class TestApplication extends Application
 			$string->setColor($color);
 			$string->setString($value);
 			printf(
-				"%-12s\t%-12s\t%-12s\t%-12s\n",
+				"%-16s%-16s%-27s%-16s\n",
 				$name, self::getRepeats(), $string . ' sec', $percent . '%'
 			);
 		}
 	}
 
+	/**
+	 * Calculate result percent difference
+	 *
+	 * @param $best float Best test result
+	 * @param $current float Result for comparison
+	 * @return CliColor
+	 */
 	private static function getPercentDiff($best, $current)
 	{
 		$diff    = $current - $best;
