@@ -18,6 +18,7 @@ use Application\TestApplication;
 
 /**
  * Class IncludeVsRequire
+ *
  * @author  Yancharuk Alexander <alex@itvault.info>
  */
 class IncludeVsRequire extends TestApplication
