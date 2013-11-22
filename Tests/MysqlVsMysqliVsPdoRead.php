@@ -48,14 +48,15 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		$link = mysql_connect(self::$host, self::$user, self::$password);
 		mysql_select_db(self::$database);
 		for ($i = 1; $i <= $repeats; ++$i) {
+			$result = array();
 			Timer::start();
-			$result = mysql_query($sql, $link);
-			while ($row = mysql_fetch_assoc($result));
+			$res = mysql_query($sql, $link);
+			while ($row = mysql_fetch_assoc($res)) $result[] = $row;
 			Timer::stop();
 			$bar->update($i);
 		}
 
-		mysql_free_result($result);
+		mysql_free_result($res);
 		self::addResult('MySQL', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
@@ -65,14 +66,15 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 			self::$host, self::$user, self::$password, self::$database
 		);
 		for ($i = 1; $i <= $repeats; ++$i) {
+			$result = array();
 			Timer::start();
-			$result = $mysqli->query($sql);
-			while ($row = $result->fetch_assoc());
+			$res = $mysqli->query($sql);
+			while ($row = $res->fetch_assoc()) $result[] = $row;
 			Timer::stop();
 			$bar->update($i);
 		}
 
-		$result->free();
+		$res->free();
 		self::addResult('MySQLi', Timer::get());
 
         $bar = new CliProgressBar($repeats);
@@ -84,13 +86,26 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		$pdo = new PDO($dsn, self::$user, self::$password);
 		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         for ($i = 1; $i <= $repeats; ++$i) {
+			$result = array();
             Timer::start();
-			foreach ($pdo->query($sql) as $row);
+			foreach ($pdo->query($sql) as $row) $result[] = $row;
             Timer::stop();
             $bar->update($i);
         }
 
         self::addResult('PDO', Timer::get());
+		$bar = new CliProgressBar($repeats);
+
+		Timer::reset();
+		for ($i = 1; $i <= $repeats; ++$i) {
+			Timer::start();
+			$stmt = $pdo->query($sql);
+			$result = $stmt->fetchAll();
+			Timer::stop();
+			$bar->update($i);
+		}
+
+		self::addResult('PDO fetchAll()', Timer::get());
 		self::cleanup();
 	}
 
