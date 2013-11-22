@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+for i in $(ls Tests); do
+	echo ${i%.*}
+done | column -x
