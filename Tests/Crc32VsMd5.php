@@ -27,7 +27,7 @@ class Crc32VsMd5 extends TestApplication
 
 	final public static function run()
 	{
-        $string = 'some random data';
+		$string = 'some random data';
 
 		$repeats = self::getRepeats();
 		$bar = new CliProgressBar($repeats);
@@ -51,15 +51,15 @@ class Crc32VsMd5 extends TestApplication
 
 		self::addResult('hash(\'crc32b\')', Timer::get());
 
-        $bar = new CliProgressBar($repeats);
-        Timer::reset();
-        for ($i = 1; $i <= $repeats; ++$i) {
-            Timer::start();
-            md5($string);
-            Timer::stop();
-            $bar->update($i);
-        }
+		$bar = new CliProgressBar($repeats);
+		Timer::reset();
+		for ($i = 1; $i <= $repeats; ++$i) {
+			Timer::start();
+			md5($string);
+			Timer::stop();
+			$bar->update($i);
+		}
 
-        self::addResult('md5()', Timer::get());
+		self::addResult('md5()', Timer::get());
 	}
 }

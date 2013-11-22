@@ -32,8 +32,8 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 
 	protected static $repeats = 1000;
 
-    private static $user = 'root';
-    private static $host = 'localhost';
+	private static $user = 'root';
+	private static $host = 'localhost';
 	private static $password = '_nHBCVyE9i';
 	private static $database = 'php_bench_test';
 
@@ -77,23 +77,23 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		$res->free();
 		self::addResult('MySQLi', Timer::get());
 
-        $bar = new CliProgressBar($repeats);
+		$bar = new CliProgressBar($repeats);
 
-        Timer::reset();
+		Timer::reset();
 		$dsn = 'mysql:dbname=' . self::$database . ';'
 			 . 'host=' . self::$host . ';'
 			 . 'charset=utf8';
 		$pdo = new PDO($dsn, self::$user, self::$password);
 		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        for ($i = 1; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			$result = array();
-            Timer::start();
+			Timer::start();
 			foreach ($pdo->query($sql) as $row) $result[] = $row;
-            Timer::stop();
-            $bar->update($i);
-        }
+			Timer::stop();
+			$bar->update($i);
+		}
 
-        self::addResult('PDO', Timer::get());
+		self::addResult('PDO', Timer::get());
 		$bar = new CliProgressBar($repeats);
 
 		Timer::reset();
