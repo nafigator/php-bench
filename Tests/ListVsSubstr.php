@@ -30,7 +30,7 @@ class ListVsSubstr extends TestApplication
 		$text = 'Administration\Controller\UserController::Save';
 
 		$bar = new CliProgressBar($repeats);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			list($module) = explode('::', $text);
 			Timer::stop();
@@ -42,7 +42,7 @@ class ListVsSubstr extends TestApplication
 		$bar = new CliProgressBar($repeats);
 
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$module = substr($text, 0, strpos($text, '::'));
 			Timer::stop();

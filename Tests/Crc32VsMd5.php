@@ -31,7 +31,7 @@ class Crc32VsMd5 extends TestApplication
 
 		$repeats = self::getRepeats();
 		$bar = new CliProgressBar($repeats);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			dechex(crc32($string));
 			Timer::stop();
@@ -42,7 +42,7 @@ class Crc32VsMd5 extends TestApplication
 
 		$bar = new CliProgressBar($repeats);
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			hash('crc32b', $string);
 			Timer::stop();
@@ -53,7 +53,7 @@ class Crc32VsMd5 extends TestApplication
 
         $bar = new CliProgressBar($repeats);
         Timer::reset();
-        for ($i = 0; $i <= $repeats; ++$i) {
+        for ($i = 1; $i <= $repeats; ++$i) {
             Timer::start();
             md5($string);
             Timer::stop();

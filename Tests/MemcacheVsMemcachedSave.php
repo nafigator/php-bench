@@ -39,7 +39,7 @@ class MemcacheVsMemcachedSave extends TestApplication
 		$bar = new CliProgressBar($repeats);
 		$data = range(0, 99);
 		Cache::setAdapter('Memcache');
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			$key = sha1(uniqid());
 			Timer::start();
 			Cache::set($key, $data);
@@ -52,7 +52,7 @@ class MemcacheVsMemcachedSave extends TestApplication
 		$bar = new CliProgressBar($repeats);
 		Timer::reset();
 		Cache::setAdapter('Memcached');
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			$key = sha1(uniqid());
 			Timer::start();
 			Cache::set($key, $data);

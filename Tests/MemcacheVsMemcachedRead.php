@@ -41,7 +41,7 @@ class MemcacheVsMemcachedRead extends TestApplication
 		$data = range(0, 99);
 		Cache::setAdapter('Memcache');
 		Cache::set($key, $data);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			Cache::get($key);
 			Timer::stop();
@@ -54,7 +54,7 @@ class MemcacheVsMemcachedRead extends TestApplication
 
 		Cache::setAdapter('Memcached');
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			Cache::get($key);
 			Timer::stop();

@@ -30,7 +30,7 @@ class ArrayVsObject extends TestApplication
 		$element_count = 50;
 
 		$bar = new CliProgressBar($repeats);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$object = new \stdClass();
 			Timer::stop();
@@ -47,7 +47,7 @@ class ArrayVsObject extends TestApplication
 		$bar = new CliProgressBar($repeats);
 
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$array = [];
 			Timer::stop();

@@ -33,7 +33,7 @@ class StrposVsStrstr extends TestApplication
 		$needle = 'is test';
 
 		$bar = new CliProgressBar($repeats);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$result = strpos($string, $needle);
 			Timer::stop();
@@ -45,7 +45,7 @@ class StrposVsStrstr extends TestApplication
 		$bar = new CliProgressBar($repeats);
 
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$result = strstr($string, $needle);
 			Timer::stop();

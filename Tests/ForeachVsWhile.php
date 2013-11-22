@@ -29,7 +29,7 @@ class ForeachVsWhile extends TestApplication
 		$repeats = self::getRepeats();
 
 		$bar = new CliProgressBar($repeats);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$j = 0; while (++$j <= $repeats) {}
 			Timer::stop();
@@ -41,7 +41,7 @@ class ForeachVsWhile extends TestApplication
 		$bar = new CliProgressBar($repeats);
 
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			for ($j = 0; $j < $repeats; ++$j) {}
 			Timer::stop();

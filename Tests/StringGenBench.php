@@ -29,7 +29,7 @@ class StringGenBench extends TestApplication
 		$repeats = self::getRepeats();
 
 		$bar = new CliProgressBar($repeats);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			genStrSuffle();
 			Timer::stop();
@@ -41,7 +41,7 @@ class StringGenBench extends TestApplication
 		$bar = new CliProgressBar($repeats);
 
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			genStrArr();
 			Timer::stop();

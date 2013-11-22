@@ -30,7 +30,7 @@ class SelfVsClass extends TestApplication
 		$a = 0;
 		$repeats = self::getRepeats();
 		$bar = new CliProgressBar($repeats);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$a = self::TEST;
 			Timer::stop();
@@ -43,7 +43,7 @@ class SelfVsClass extends TestApplication
 
 		$a = 0;
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$a = SelfVsClass::TEST;
 			Timer::stop();

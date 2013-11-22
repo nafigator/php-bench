@@ -31,7 +31,7 @@ class StrtrVsStrReplace extends TestApplication
 
 		$namespace = 'Vendor\Package\Core';
 		$bar = new CliProgressBar($repeats);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$result = strtr($namespace, array('\\' => DIRECTORY_SEPARATOR));
 			Timer::stop();
@@ -43,7 +43,7 @@ class StrtrVsStrReplace extends TestApplication
 		$bar = new CliProgressBar($repeats);
 
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$result = str_replace('\\', DIRECTORY_SEPARATOR, $namespace);
 			Timer::stop();

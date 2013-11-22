@@ -30,7 +30,7 @@ class ArrayKeyVsIsset extends TestApplication
 		$array = ['prop' => 'value'];
 
 		$bar = new CliProgressBar($repeats);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			array_key_exists('prop', $array);
 			Timer::stop();
@@ -42,7 +42,7 @@ class ArrayKeyVsIsset extends TestApplication
 		$bar = new CliProgressBar($repeats);
 
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			isset($array['prop']);
 			Timer::stop();

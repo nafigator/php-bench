@@ -31,7 +31,7 @@ class IncludeOnceVsRequireOnce extends TestApplication
 		self::addResult('require', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			include_once 'ThisVsSelf.php';
 			Timer::stop();
@@ -41,7 +41,7 @@ class IncludeOnceVsRequireOnce extends TestApplication
 		self::addResult('include_once', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			require_once 'ThisVsSelf.php';
 			Timer::stop();

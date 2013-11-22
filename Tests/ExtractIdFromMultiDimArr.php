@@ -35,7 +35,7 @@ class ExtractIdFromMultiDimArr extends TestApplication
 		$repeats = self::getRepeats();
 		$bar = new CliProgressBar($repeats);
 		$result = array();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$result = array_map(function($element) {
 				return $element['ID'];
@@ -50,7 +50,7 @@ class ExtractIdFromMultiDimArr extends TestApplication
 
 		$result = array();
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			foreach ($array as $element) {
 				$result[] = $element['ID'];
@@ -65,7 +65,7 @@ class ExtractIdFromMultiDimArr extends TestApplication
 
 		$result = array();
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			foreach ($array as $element) {
 				array_push($result, $element['ID']);

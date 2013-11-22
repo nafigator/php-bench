@@ -30,7 +30,7 @@ class ForVsRange extends TestApplication
 
 		$tmp = 100;
 		$bar = new CliProgressBar($repeats);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			for ($j = 0; $j <= $tmp; ++$j) {}
 			Timer::stop();
@@ -42,7 +42,7 @@ class ForVsRange extends TestApplication
 		$bar = new CliProgressBar($repeats);
 
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			foreach (range(0, $tmp) as $j) {}
 			Timer::stop();

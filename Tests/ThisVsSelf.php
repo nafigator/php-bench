@@ -27,7 +27,7 @@ class ThisVsSelf extends TestApplication
 	{
 		$repeats = 100000;
 		$bar = new CliProgressBar($repeats);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$var = new Test;
 			Timer::stop();
@@ -39,7 +39,7 @@ class ThisVsSelf extends TestApplication
 		$bar = new CliProgressBar($repeats);
 
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$var = new TestSelf;
 			Timer::stop();

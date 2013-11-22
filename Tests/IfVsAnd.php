@@ -32,7 +32,7 @@ class IfVsAnd extends TestApplication
 		$tmp = false;
 
 		$bar = new CliProgressBar($repeats);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			if ($var) {
 				$tmp = $var;
@@ -46,7 +46,7 @@ class IfVsAnd extends TestApplication
 		$bar = new CliProgressBar($repeats);
 
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$var and $tmp = $var;
 			Timer::stop();

@@ -29,7 +29,7 @@ class CloneVsNew extends TestApplication
 		$repeats = self::getRepeats();
 
 		$bar = new CliProgressBar($repeats);
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$myobj1=new \stdClass();
 			$myobj2=new \stdClass();
@@ -44,7 +44,7 @@ class CloneVsNew extends TestApplication
 		$bar = new CliProgressBar($repeats);
 
 		Timer::reset();
-		for ($i = 0; $i <= $repeats; ++$i) {
+		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$myobj1 = new \stdClass();
 			$myobj2 = clone $myobj1;
