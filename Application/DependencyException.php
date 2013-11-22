@@ -13,13 +13,12 @@
 
 namespace Application;
 
-
 use Veles\Tools\CliColor;
 
 /**
  * Class DependencyException
  *
- * @package Application
+ * @author  Yancharuk Alexander <alex@itvault.info>
  */
 class DependencyException extends \Exception
 {
