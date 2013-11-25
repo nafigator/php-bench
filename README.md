@@ -24,8 +24,8 @@ Show available tests:
 Create test skeleton:
 
     ./test-new <Test name> [<Block count>]
-**Test name** - Name of new test class.
-**Block count** - How much test blocks generate
+**Test name** - name of new test class.<br>
+**Block count** - how much test blocks generate
 
 Run test:
 
