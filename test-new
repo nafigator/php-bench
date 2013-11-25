@@ -1,0 +1,85 @@
+#!/usr/bin/env php
+<?php
+$content = '';
+
+if ($argc < 2) {
+	throw new Exception('You need to enter test name');
+}
+
+$test_name = $argv[1];
+$test_cnt  = isset($argv[2]) ? $argv[2] : 2;
+$file_name = "$test_name.php";
+$file_path = dirname(__FILE__) . "/Tests/$file_name";
+$user_name = trim(exec('git config user.name'));
+$user_mail = trim(exec('git config user.email'));
+$license   = 'The BSD 3-Clause License.';
+$curr_date = date('D M d H:i:s Y');
+
+$content .= <<<EOT
+<?php
+/**
+ * @todo <Test description here>
+ * @file    $file_name
+ *
+ * PHP version 5.3.9+
+ *
+ * @author  $user_name <$user_mail>
+ * @date    $curr_date
+ * @copyright $license
+ */
+
+namespace Tests;
+
+use Veles\Tools\CliProgressBar;
+use Veles\Tools\Timer;
+use Application\TestApplication;
+
+/**
+ * Class $test_name
+ *
+ * @author $user_name <$user_mail>
+ */
+class $test_name extends TestApplication
+{
+    protected static \$repeats = 10000;
+
+	final public static function run()
+	{
+		\$repeats = self::getRepeats();
+
+		\$bar = new CliProgressBar(\$repeats);
+		for (\$i = 1; \$i <= \$repeats; ++\$i) {
+			Timer::start();
+			//TODO Place here your code
+			Timer::stop();
+			\$bar->update(\$i);
+		}
+
+		self::addResult('ResultName1', Timer::get());
+EOT;
+
+$i = 1;
+while (++$i <= $test_cnt) {
+	$content .= <<<EOT
+
+
+		Timer::reset();
+		\$bar = new CliProgressBar(\$repeats);
+		for (\$i = 1; \$i <= \$repeats; ++\$i) {
+			Timer::start();
+			//TODO Place here your code
+			Timer::stop();
+			\$bar->update(\$i);
+		}
+
+		self::addResult('ResultName$i', Timer::get());
+EOT;
+}
+
+$content .= <<<EOT
+
+	}
+}
+EOT;
+
+file_put_contents($file_path, $content);
