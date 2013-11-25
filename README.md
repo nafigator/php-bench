@@ -1,7 +1,7 @@
 php-bench
 =========
 
-Tools for benchmark PHP algorithms.
+Console tools for benchmark PHP algorithms.
 
 ![Alt php-bench](https://github.com/nafigator/php-bench/raw/master/screen.png)
 
@@ -17,6 +17,11 @@ Tools for benchmark PHP algorithms.
 	git submodule update
 
 ###Usage:
+
+Show available tests:
+
+	./test-list
+Run test:
 
 	./test <Class>
 
