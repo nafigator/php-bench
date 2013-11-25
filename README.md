@@ -21,6 +21,12 @@ Console tools for benchmark PHP algorithms.
 Show available tests:
 
 	./test-list
+Create test skeleton:
+
+    ./test-new <Test name> [<Block count>]
+**Test name** - Name of new test class.
+**Block count** - How much test blocks generate
+
 Run test:
 
 	./test <Class>
