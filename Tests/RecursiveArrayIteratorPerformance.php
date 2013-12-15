@@ -122,8 +122,8 @@ function checkKeyIsInArray($dataItemName, $array)
 	foreach ($array as $key => $value) {
 		if ((string) $key == $dataItemName)
 			return true;
-		if (is_array($value))
-			return checkKeyIsInArray($dataItemName, $value);
+		if (is_array($value) && checkKeyIsInArray($dataItemName, $value))
+			return true;
 	}
 
 	return false;
