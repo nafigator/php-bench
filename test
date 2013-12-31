@@ -14,23 +14,16 @@
  * @copyright The BSD 3-Clause License.
  */
 
-// environment: development, production
 use Veles\AutoLoader;
 
 define('BASE_PATH', realpath(__DIR__));
 
-set_include_path(implode(PATH_SEPARATOR,
-	array(
-		BASE_PATH . '/lib',
-		get_include_path()
-	)
-));
-
 setlocale(LC_ALL, 'ru_RU.utf8');
 date_default_timezone_set('Europe/Moscow');
 
-require 'Veles/AutoLoader.php';
+require BASE_PATH . '/lib/Veles/AutoLoader.php';
 AutoLoader::init();
+AutoLoader::registerPath(array(BASE_PATH . '/lib'));
 
 if ($argc < 2) {
 	throw new Exception('Enter classname as parameter!');

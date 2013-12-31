@@ -34,7 +34,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 
 	private static $user = 'root';
 	private static $host = 'localhost';
-	private static $password = '_nHBCVyE9i';
+	private static $password = '';
 	private static $database = 'php_bench_test';
 
 	final public static function run()
