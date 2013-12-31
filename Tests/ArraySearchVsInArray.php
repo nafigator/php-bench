@@ -1,6 +1,6 @@
 <?php
 /**
- * @todo <Test description here>
+ * Check what is faster array_search or in_array
  * @file    ArraySearchVsInArray.php
  *
  * PHP version 5.3.9+
