@@ -1,6 +1,6 @@
 <?php
 /**
- * Performance test of is_a() and instancheof
+ * Performance test of is_a() and instanceof
  *
  * @file    IsAVsInstanceOf.php
  *
