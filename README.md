@@ -18,6 +18,10 @@ Console tools for benchmark PHP algorithms.
 
 ###Usage:
 
+Create copy of test executable and modify your local settings:
+
+    cp test-example test
+
 Show available tests:
 
 	./test-list
