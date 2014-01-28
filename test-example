@@ -1,0 +1,70 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Test loader
+ *
+ * 1. Make copy of this file:
+ * cp test-example test
+ *
+ * 2. Edit your Db or cache parameters in copy file.
+ *
+ * 3. Run tests using new created file:
+ * ./test <TestName>
+ *
+ * @file    test
+ *
+ * PHP version 5.3.9+
+ *
+ * @author  Yancharuk Alexander <alex@itvault.info>
+ * @date    Сбт Фев 16 17:01:16 2013
+ * @copyright The BSD 3-Clause License.
+ */
+
+use Veles\AutoLoader;
+use Veles\DataBase\ConnectionPools\ConnectionPool;
+use Veles\DataBase\Connections\PdoConnection;
+use Veles\DataBase\Adapters\PdoAdapter;
+use Veles\DataBase\Db;
+
+define('BASE_PATH', realpath(__DIR__));
+
+set_include_path(implode(PATH_SEPARATOR,
+	array(
+		BASE_PATH . '/lib',
+		get_include_path()
+	)
+));
+
+setlocale(LC_ALL, 'ru_RU.utf8');
+date_default_timezone_set('Europe/Moscow');
+/** @noinspection PhpIncludeInspection */
+require 'Veles/AutoLoader.php';
+AutoLoader::init();
+
+// Db class initialization
+$pool = new ConnectionPool();
+$conn = new PdoConnection('master');
+
+$conn->setDsn('mysql:host=localhost;dbname=dbname;charset=utf8')
+	->setUserName('user')
+	->setPassword('password');
+$pool->addConnection($conn, true);
+PdoAdapter::setPool($pool);
+PdoAdapter::addCall('setAttribute', array(PDO::ATTR_EMULATE_PREPARES, false));
+PdoAdapter::addCall(
+	'setAttribute',
+	array(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC)
+);
+Db::setAdapter('Pdo');
+
+if ($argc < 2) {
+	throw new Exception('Enter classname as parameter!');
+}
+
+$application = "Tests\\$argv[1]";
+/** @noinspection PhpUndefinedMethodInspection */
+$application::testDependencies();
+/** @noinspection PhpUndefinedMethodInspection */
+$application::run();
+/** @noinspection PhpUndefinedMethodInspection */
+$application::showResults();
