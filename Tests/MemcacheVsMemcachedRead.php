@@ -67,7 +67,7 @@ class MemcacheVsMemcachedRead extends TestApplication
 
 	private static function initCache()
 	{
-		MemcacheAdapter::instance()->addServer('localhost', 11211);
-		MemcachedAdapter::instance()->addServer('localhost', 11211);
+		MemcachedAdapter::addCall('addServer', array('localhost', 11211));
+		MemcacheAdapter::addCall('addServer', array('localhost', 11211));
 	}
 }
