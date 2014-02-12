@@ -53,5 +53,17 @@ class StrposVsStrstr extends TestApplication
 		}
 
 		self::addResult('strstr', Timer::get());
+
+		$bar = new CliProgressBar($repeats);
+
+		Timer::reset();
+		for ($i = 1; $i <= $repeats; ++$i) {
+			Timer::start();
+			$result = substr($string, 0, strlen($needle));
+			Timer::stop();
+			$bar->update($i);
+		}
+
+		self::addResult('substr+strlen', Timer::get());
 	}
 }
