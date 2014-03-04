@@ -28,17 +28,11 @@ use Veles\DataBase\Db;
 
 define('BASE_PATH', realpath(__DIR__));
 
-set_include_path(implode(PATH_SEPARATOR,
-	array(
-		BASE_PATH . '/lib',
-		get_include_path()
-	)
-));
-
 setlocale(LC_ALL, 'ru_RU.utf8');
 date_default_timezone_set('Europe/Moscow');
 /** @noinspection PhpIncludeInspection */
-require 'Veles/AutoLoader.php';
+require 'lib/Veles/AutoLoader.php';
+AutoLoader::registerPath(BASE_PATH . '/lib');
 AutoLoader::init();
 
 // Db class initialization
