@@ -1,6 +1,6 @@
 <?php
 /**
- * Check most efficient algorithm for checking key in multidimensional associative array
+ * Check most efficient algorithm for checking value in multidimensional associative array
  * @file    RecursiveArrayIteratorPerformance.php
  *
  * PHP version 5.3.9+
