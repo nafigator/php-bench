@@ -34,34 +34,56 @@ class RecursiveDirectoryScan extends TestApplication
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
-			//TODO Place here your code
+			recursive_read_dir($dir);
 			Timer::stop();
 			$bar->update($i);
 		}
 
-		self::addResult('ResultName1', Timer::get());
+		self::addResult('readdir()', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
-			//TODO Place here your code
+			recursive_dir($dir);
 			Timer::stop();
 			$bar->update($i);
 		}
 
-		self::addResult('ResultName2', Timer::get());
+		self::addResult('dir()', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
-			//TODO Place here your code
+			recursive_scan_dir($dir);
 			Timer::stop();
 			$bar->update($i);
 		}
 
-		self::addResult('ResultName3', Timer::get());
+		self::addResult('scandir()', Timer::get());
+
+		Timer::reset();
+		$bar = new CliProgressBar($repeats);
+		for ($i = 1; $i <= $repeats; ++$i) {
+			Timer::start();
+			recursive_diff_scan_dir($dir);
+			Timer::stop();
+			$bar->update($i);
+		}
+
+		self::addResult('diff scandir()', Timer::get());
+
+		Timer::reset();
+		$bar = new CliProgressBar($repeats);
+		for ($i = 1; $i <= $repeats; ++$i) {
+			Timer::start();
+			recursive_iterator($dir);
+			Timer::stop();
+			$bar->update($i);
+		}
+
+		self::addResult('iterator', Timer::get());
 
 		self::dirCleanup($dir);
 	}
@@ -97,7 +119,6 @@ class RecursiveDirectoryScan extends TestApplication
 			self::createDir($dir, $max, $files, $dirs, $dim + 1);
 		}
 
-		// Создаём временные файлы
 		while (--$files >= 0) {
 			$file_name = $name . uniqid('/file-') . '.tmp';
 			fopen($file_name, 'w');
@@ -116,7 +137,7 @@ class RecursiveDirectoryScan extends TestApplication
 		foreach (scandir($dir) as $name) {
 			if ('..' === $name or '.' === $name) continue;
 
-			$path = $dir . '/' . $name;
+			$path = "$dir/$name";
 
 			if (is_dir($path) and is_writable($path)) {
 				self::dirCleanup($path);
@@ -128,4 +149,88 @@ class RecursiveDirectoryScan extends TestApplication
 
 		rmdir($dir);
 	}
+}
+
+function recursive_read_dir($dir) {
+	$result = array();
+
+	$handle = opendir($dir);
+	while (false !== ($file = readdir($handle))) {
+		if ('..' === $file or '.' === $file) continue;
+		if (is_dir("$dir/$file")) {
+			$result = array_merge(
+				$result, recursive_read_dir("$dir/$file")
+			);
+		} else {
+			$result[] = $file;
+		}
+	}
+	closedir($handle);
+
+	return $result;
+}
+
+function recursive_dir($dir) {
+	$result = array();
+
+	$directory = dir($dir);
+	while (false !== ($file = $directory->read())) {
+		if ('..' === $file or '.' === $file) continue;
+		if (is_dir("$dir/$file")) {
+			$result = array_merge(
+				$result, recursive_dir("$dir/$file")
+			);
+		} else {
+			$result[] = $file;
+		}
+	}
+
+	return $result;
+}
+
+function recursive_scan_dir($dir) {
+	$result = array();
+
+	foreach (scandir($dir) as $file) {
+		if ('..' === $file or '.' === $file) continue;
+		if (is_dir("$dir/$file")) {
+			$result = array_merge(
+				$result, recursive_scan_dir("$dir/$file")
+			);
+		} else {
+			$result[] = $file;
+		}
+	}
+
+	return $result;
+}
+
+function recursive_diff_scan_dir($dir) {
+	$result = array();
+
+	foreach (array_diff(scandir($dir), array('..', '.')) as $file) {
+		if (is_dir("$dir/$file")) {
+			$result = array_merge(
+				$result, recursive_diff_scan_dir("$dir/$file")
+			);
+		} else {
+			$result[] = $file;
+		}
+	}
+
+	return $result;
+}
+
+function recursive_iterator($dir) {
+	$result = array();
+
+	$iterator = new \RecursiveIteratorIterator(
+		new \RecursiveDirectoryIterator(
+			$dir, \RecursiveDirectoryIterator::SKIP_DOTS
+		)
+	);
+	foreach ($iterator as $file_info) {
+		$result[] = $file_info->getFilename();
+	}
+	return $result;
 }
