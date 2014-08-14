@@ -111,8 +111,9 @@ class RecursiveDirectoryScan extends TestApplication
 	 * @throws \Exception
 	 * @return string Return root directory name
 	 */
-	final public static function createDir($name = null, $max = 3, $files = 30, $dirs = 3, $dim = 0)
-	{
+	final public static function createDir(
+		$name = null, $max = 3, $files = 30, $dirs = 3, $dim = 0
+	) {
 		if ($max < $dim) return $name;
 
 		if (null === $name && 0 === $dim) {
@@ -236,11 +237,12 @@ function recursive_iterator($dir) {
 	$result = array();
 
 	$iterator = new \RecursiveIteratorIterator(
-		new \RecursiveDirectoryIterator(
-			$dir, \RecursiveDirectoryIterator::SKIP_DOTS
+		new \RecursiveDirectoryIterator($dir,
+			\FilesystemIterator::SKIP_DOTS
+			| \FilesystemIterator::KEY_AS_FILENAME
 		)
 	);
-	foreach ($iterator as $filename => $f_info) {
+	foreach ($iterator as $filename => $file_info) {
 		$result[] = $filename;
 	}
 	return $result;
