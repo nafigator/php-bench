@@ -85,6 +85,17 @@ class RecursiveDirectoryScan extends TestApplication
 
 		self::addResult('iterator', Timer::get());
 
+		Timer::reset();
+		$bar = new CliProgressBar($repeats);
+		for ($i = 1; $i <= $repeats; ++$i) {
+			Timer::start();
+			recursive_glob($dir);
+			Timer::stop();
+			$bar->update($i);
+		}
+
+		self::addResult('glob()', Timer::get());
+
 		self::dirCleanup($dir);
 	}
 
@@ -229,8 +240,24 @@ function recursive_iterator($dir) {
 			$dir, \RecursiveDirectoryIterator::SKIP_DOTS
 		)
 	);
-	foreach ($iterator as $file_info) {
-		$result[] = $file_info->getFilename();
+	foreach ($iterator as $filename => $f_info) {
+		$result[] = $filename;
 	}
+	return $result;
+}
+
+function recursive_glob($dir) {
+	$result = array();
+
+	foreach (glob("$dir/*") as $file) {
+		if (is_dir($file)) {
+			$result = array_merge(
+				$result, recursive_glob($file)
+			);
+		} else {
+			$result[] = $file;
+		}
+	}
+
 	return $result;
 }
