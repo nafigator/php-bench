@@ -14,11 +14,11 @@ namespace Tests;
 
 use Application\DbConnectException;
 use Application\DbQueryException;
-use Veles\Tools\CliProgressBar;
-use Veles\Tools\Timer;
 use Application\TestApplication;
 use mysqli;
 use PDO;
+use Veles\Tools\CliProgressBar;
+use Veles\Tools\Timer;
 
 /**
  * Class MysqlVsMysqliVsPdoRead

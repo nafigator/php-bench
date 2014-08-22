@@ -13,9 +13,9 @@
 
 namespace Tests;
 
-use \Veles\Tools\Timer;
-use \Veles\Tools\CliProgressBar;
 use Application\TestApplication;
+use Veles\Tools\CliProgressBar;
+use Veles\Tools\Timer;
 
 /**
  * Class ThisVsSelf

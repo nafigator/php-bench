@@ -12,12 +12,12 @@
 
 namespace Tests;
 
+use Application\TestApplication;
+use PDO;
 use Veles\DataBase\Adapters\PdoAdapter;
+use Veles\DataBase\Db;
 use Veles\Tools\CliProgressBar;
 use Veles\Tools\Timer;
-use Application\TestApplication;
-use Veles\DataBase\Db;
-use PDO;
 
 /**
  * Class PdoEmulatedPlaceholders

@@ -12,11 +12,11 @@
 
 namespace Tests;
 
-use Veles\Tools\CliProgressBar;
-use Veles\Tools\Timer;
 use Application\TestApplication;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
+use Veles\Tools\CliProgressBar;
+use Veles\Tools\Timer;
 
 /**
  * Class RecursiveArrayIteratorPerformance

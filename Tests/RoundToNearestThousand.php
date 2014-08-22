@@ -13,9 +13,9 @@
 
 namespace Tests;
 
+use Application\TestApplication;
 use Veles\Tools\CliProgressBar;
 use Veles\Tools\Timer;
-use Application\TestApplication;
 
 /**
  * Class RoundToNearestThousand
