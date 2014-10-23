@@ -26,7 +26,7 @@ use Veles\Tools\Timer;
  */
 class PdoEmulatedPlaceholders extends TestApplication
 {
-    protected static $repeats = 10000;
+    protected static $repeats = 1000;
 	private static $database = 'php_bench_test';
 
 	final public static function run()
@@ -54,11 +54,8 @@ class PdoEmulatedPlaceholders extends TestApplication
 
 		self::addResult('Real', Timer::get());
 
-		PdoAdapter::addCall(
-			'setAttribute',
-			array(PDO::ATTR_EMULATE_PREPARES, true)
-		);
-		PdoAdapter::instance();
+		PdoAdapter::instance()->getConnection()
+			->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
