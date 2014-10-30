@@ -38,7 +38,7 @@ class MemcacheVsMemcachedRead extends TestApplication
 		$repeats = self::getRepeats();
 		$bar = new CliProgressBar($repeats);
 		$key = md5('adfjkjkang');
-		$data = range(0, 99);
+		$data = range(0, 10);
 		Cache::setAdapter(MemcacheAdapter::instance());
 		Cache::set($key, $data);
 		for ($i = 1; $i <= $repeats; ++$i) {
