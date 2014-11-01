@@ -3,7 +3,7 @@
  * Check what is faster array_search or in_array
  * @file    ArraySearchVsInArray.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Alexander Yancharuk <alex@itvault.info>
  * @date    Tue Dec 31 17:30:46 2013

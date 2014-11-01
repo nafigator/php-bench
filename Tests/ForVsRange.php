@@ -3,7 +3,7 @@
  * Check what is faster common for or foreach with range()
  * @file    ForVsRange.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  * @date    2013-08-24 14:33

@@ -3,7 +3,7 @@
  * Check for best recursive directory scan algorithm
  * @file    RecursiveDirectoryScan.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Alexander Yancharuk <alex@itvault.info>
  * @date    Thu Aug 14 11:12:31 2014

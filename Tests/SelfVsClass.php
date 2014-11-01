@@ -3,7 +3,7 @@
  * Check what is faster - self::CONST or class::CONST
  * @file    SelfVsClass.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  * @date    Сбт Фев 16 17:01:16 2013

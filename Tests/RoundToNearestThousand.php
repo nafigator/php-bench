@@ -4,7 +4,7 @@
  *
  * @file    RoundToNearestThousand.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Alexander Yancharuk <alex@itvault.info>
  * @date    Wed Jan 01 11:12:36 2014

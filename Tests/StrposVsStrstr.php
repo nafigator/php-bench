@@ -4,7 +4,7 @@
  *
  * @file    StrposVsStrstr.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  * @date    Wed Oct  2 16:42:55 2013

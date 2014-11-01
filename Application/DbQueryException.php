@@ -4,7 +4,7 @@
  *
  * @file    DbQueryException.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  * @date    Чтв Ноя 21 18:05:22 2013
@@ -33,4 +33,4 @@ class DbQueryException extends \Exception
 		$str = "Database query error!\n$msg\n";
 		echo $warning->setString($str);
 	}
-} 
+}

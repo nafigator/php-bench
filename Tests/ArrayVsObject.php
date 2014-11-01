@@ -3,7 +3,7 @@
  * Check what is faster object properties initialization or array elements
  * @file    ArrayVsObject.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  * @date    Tue Sep 24 17:03:53 2013

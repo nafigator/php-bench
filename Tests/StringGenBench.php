@@ -3,7 +3,7 @@
  * Check performance of two functions that make strings
  * @file    StringGenBench.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  * @date    Втр Сен 10 16:03:47 2013

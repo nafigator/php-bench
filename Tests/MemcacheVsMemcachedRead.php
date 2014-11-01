@@ -4,7 +4,7 @@
 *
 * @file    MemcacheVsMemcachedRead.php
 *
-* PHP version 5.3.9+
+* PHP version 5.4+
 *
 * @author  Yancharuk Alexander <alex@itvault.info>
 * @date    Птн Авг 23 11:05:53 2013

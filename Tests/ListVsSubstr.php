@@ -3,7 +3,7 @@
  * Check what is faster list+explode or substr+strpos
  * @file    ListVsSubstr.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  * @date    Пнд Сен 16 15:31:22 2013

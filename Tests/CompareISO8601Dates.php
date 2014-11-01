@@ -3,7 +3,7 @@
  * Check performance of comparing iso8601 dates algorithms
  * @file    CompareISO8601Dates.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Alexander Yancharuk <alex@itvault.info>
  * @date    Sun Dec 29 12:18:22 2013

@@ -3,7 +3,7 @@
  * What is faster typecasting or function intval()
  * @file    IntvalVsTypeCast.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Alexander Yancharuk <alex@itvault.info>
  * @date    Thu Apr 03 14:39:45 2014

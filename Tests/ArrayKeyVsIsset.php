@@ -3,7 +3,7 @@
  * Check what is faster array_key_exists or isset
  * @file    ArrayKeyVsIsset.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  * @date    Tue Sep 24 17:34:28 2013

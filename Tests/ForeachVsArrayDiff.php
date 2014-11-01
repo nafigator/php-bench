@@ -3,7 +3,7 @@
  * What is faster unset in foreach loop or array_diff_key($a, array_flip($b))?
  * @file    ForeachVsArrayDiff.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Alexander Yancharuk <alex@itvault.info>
  * @date    Tue Dec 10 10:42:28 2013

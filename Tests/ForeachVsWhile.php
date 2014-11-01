@@ -3,7 +3,7 @@
  * Check what is faster foreach or while
  * @file    ForeachVsWhile.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Yancharuk Alexander <alex@itvault.info>
  * @date	Втр Сен 10 17:03:20 2013

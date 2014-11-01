@@ -3,7 +3,7 @@
  * Benchmark PHP hash algorithms
  * @file    HashBench.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author  Alexander Yancharuk <alex@itvault.info>
  * @date    Sat Sep 20 03:37:20 2014
