@@ -164,7 +164,7 @@ class RecursiveDirectoryScan extends TestApplication
 }
 
 function recursive_read_dir($dir) {
-	$result = array();
+	$result = [];
 
 	$handle = opendir($dir);
 	while (false !== ($file = readdir($handle))) {
@@ -183,7 +183,7 @@ function recursive_read_dir($dir) {
 }
 
 function recursive_dir($dir) {
-	$result = array();
+	$result = [];
 
 	$directory = dir($dir);
 	while (false !== ($file = $directory->read())) {
@@ -201,7 +201,7 @@ function recursive_dir($dir) {
 }
 
 function recursive_scan_dir($dir) {
-	$result = array();
+	$result = [];
 
 	foreach (scandir($dir) as $file) {
 		if ('..' === $file or '.' === $file) continue;
@@ -218,9 +218,9 @@ function recursive_scan_dir($dir) {
 }
 
 function recursive_diff_scan_dir($dir) {
-	$result = array();
+	$result = [];
 
-	foreach (array_diff(scandir($dir), array('..', '.')) as $file) {
+	foreach (array_diff(scandir($dir), ['..', '.']) as $file) {
 		if (is_dir("$dir/$file")) {
 			$result = array_merge(
 				$result, recursive_diff_scan_dir("$dir/$file")
@@ -234,7 +234,7 @@ function recursive_diff_scan_dir($dir) {
 }
 
 function recursive_iterator($dir) {
-	$result = array();
+	$result = [];
 
 	$iterator = new \RecursiveIteratorIterator(
 		new \RecursiveDirectoryIterator($dir,
@@ -249,7 +249,7 @@ function recursive_iterator($dir) {
 }
 
 function recursive_glob($dir) {
-	$result = array();
+	$result = [];
 
 	foreach (glob("$dir/*") as $file) {
 		if (is_dir($file)) {

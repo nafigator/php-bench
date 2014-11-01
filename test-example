@@ -44,10 +44,10 @@ $conn->setDsn('mysql:host=localhost;dbname=dbname;charset=utf8')
 	->setPassword('password');
 $pool->addConnection($conn, true);
 PdoAdapter::setPool($pool);
-PdoAdapter::addCall('setAttribute', array(PDO::ATTR_EMULATE_PREPARES, false));
+PdoAdapter::addCall('setAttribute', [PDO::ATTR_EMULATE_PREPARES, false]);
 PdoAdapter::addCall(
 	'setAttribute',
-	array(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC)
+	[PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC]
 );
 Db::setAdapter(PdoAdapter::instance());
 

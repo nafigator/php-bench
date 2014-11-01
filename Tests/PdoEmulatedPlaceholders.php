@@ -47,7 +47,7 @@ class PdoEmulatedPlaceholders extends TestApplication
 					(?),
 					(?)
 			';
-			Db::query($sql, array($value1, $value2, $value3));
+			Db::query($sql, [$value1, $value2, $value3]);
 			Timer::stop();
 			$bar->update($i);
 		}
@@ -66,7 +66,7 @@ class PdoEmulatedPlaceholders extends TestApplication
 					(?),
 					(?)
 			';
-			Db::query($sql, array($value1, $value2, $value3));
+			Db::query($sql, [$value1, $value2, $value3]);
 			Timer::stop();
 			$bar->update($i);
 		}

@@ -88,7 +88,7 @@ class ReturnArrayVsObject extends TestApplication
 
 	private static function createArray($count, $prop_name)
 	{
-		$arr = array();
+		$arr = [];
 		$i = 0;
 		while (++$i <= $count) {
 			$arr[$prop_name . $i] = '';
@@ -107,7 +107,7 @@ class ReturnArrayVsObject extends TestApplication
 
 	private static function returnArray($count, $prop_name)
 	{
-		$arr = array();
+		$arr = [];
 		$i = 0;
 		while (++$i <= $count) {
 			$arr[$prop_name . $i] = uniqid();

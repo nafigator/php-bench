@@ -27,13 +27,13 @@ class ArraySearchVsInArray extends TestApplication
 
 	final public static function run()
 	{
-		$haystack = array(
+		$haystack = [
 			'apple',
 			'banana',
 			'cherry',
 			'potato',
 			'rutabaga'
-		);
+		];
 		$needle = 'rutabaga';
 
 		$repeats = self::getRepeats();

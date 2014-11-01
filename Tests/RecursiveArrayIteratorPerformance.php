@@ -79,7 +79,7 @@ class RecursiveArrayIteratorPerformance extends TestApplication
 function create3DAssocArray($max = 3, $elements = 100, $dim = 0)
 {
 	$i = 0;
-	$array = array();
+	$array = [];
 
 	while (++$i <= $elements) {
 		$key = uniqid('key::');

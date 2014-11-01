@@ -32,7 +32,7 @@ class ForeachVsArrayDiff extends TestApplication
 		$min = 0;
 
 		$a1 = $a2 = range($min, $max);
-		$b1 = $b2 = array();
+		$b1 = $b2 = [];
 		$i = $min - 1;
 		while(++$i <= $max) {
 			$b1[$i] = $b2[$i] = mt_rand($min, $max);

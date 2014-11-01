@@ -26,8 +26,8 @@ use Veles\Tools\Timer;
 */
 class MemcacheVsMemcachedSave extends TestApplication
 {
-	protected static $class_dependencies = array('Memcache', 'Memcached');
-	protected static $ext_dependencies = array('Memcache', 'Memcached');
+	protected static $class_dependencies = ['Memcache', 'Memcached'];
+	protected static $ext_dependencies = ['Memcache', 'Memcached'];
 
 	protected static $repeats = 10000;
 
@@ -66,7 +66,7 @@ class MemcacheVsMemcachedSave extends TestApplication
 
 	private static function initCache()
 	{
-		MemcachedAdapter::addCall('addServer', array('localhost', 11211));
-		MemcacheAdapter::addCall('addServer', array('localhost', 11211));
+		MemcachedAdapter::addCall('addServer', ['localhost', 11211]);
+		MemcacheAdapter::addCall('addServer', ['localhost', 11211]);
 	}
 }

@@ -27,8 +27,8 @@ use Veles\Tools\Timer;
  */
 class MysqlVsMysqliVsPdoRead extends TestApplication
 {
-	protected static $class_dependencies = array('PDO', 'MySQLi');
-	protected static $ext_dependencies = array('pdo_mysql', 'mysqli', 'mysql');
+	protected static $class_dependencies = ['PDO', 'MySQLi'];
+	protected static $ext_dependencies = ['pdo_mysql', 'mysqli', 'mysql'];
 
 	protected static $repeats = 1000;
 
@@ -48,7 +48,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		$link = mysql_connect(self::$host, self::$user, self::$password);
 		mysql_select_db(self::$database);
 		for ($i = 1; $i <= $repeats; ++$i) {
-			$result = array();
+			$result = [];
 			Timer::start();
 			$res = mysql_query($sql, $link);
 			while ($row = mysql_fetch_assoc($res)) $result[] = $row;
@@ -66,7 +66,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 			self::$host, self::$user, self::$password, self::$database
 		);
 		for ($i = 1; $i <= $repeats; ++$i) {
-			$result = array();
+			$result = [];
 			Timer::start();
 			$res = $mysqli->query($sql);
 			while ($row = $res->fetch_assoc()) $result[] = $row;
@@ -86,7 +86,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		$pdo = new PDO($dsn, self::$user, self::$password);
 		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 		for ($i = 1; $i <= $repeats; ++$i) {
-			$result = array();
+			$result = [];
 			Timer::start();
 			foreach ($pdo->query($sql) as $row) $result[] = $row;
 			Timer::stop();
@@ -145,7 +145,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		}
 
 
-		$arr = array();
+		$arr = [];
 		$i = 0;
 		while (++$i <= 1000) {
 			$arr[] = uniqid('test-value::');

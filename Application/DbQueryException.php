@@ -29,7 +29,7 @@ class DbQueryException extends \Exception
 	 */
 	final public function __construct($msg)
 	{
-		$warning = new CliColor('red', array('bold'));
+		$warning = new CliColor('red', ['bold']);
 		$str = "Database query error!\n$msg\n";
 		echo $warning->setString($str);
 	}

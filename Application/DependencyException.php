@@ -29,14 +29,14 @@ class DependencyException extends \Exception
 	 */
 	final public function __construct($class_names)
 	{
-		$warning = new CliColor('red', array('bold'));
+		$warning = new CliColor('red', ['bold']);
 		$str = "WARNING!\nFound unresolved dependencies:\n\n";
 		echo $warning->setString($str);
 
-		$dependencies = new CliColor('white', array('bold'));
+		$dependencies = new CliColor('white', ['bold']);
 		echo $dependencies->setString("$class_names\n");
 
-		$warning->setStyle(array('default'));
+		$warning->setStyle(['default']);
 		$str = "Please, install proper extensions for test completion.\n";
 		echo $warning->setString($str);
 	}

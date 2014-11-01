@@ -24,11 +24,11 @@ use Veles\Tools\CliColor;
 class TestApplication extends Application
 {
 	/** @var array Results array */
-	private static $results = array();
+	private static $results = [];
 	/** @var array Class names of dependencies */
-	protected static $class_dependencies = array();
+	protected static $class_dependencies = [];
 	/** @var array Extension dependencies */
-	protected static $ext_dependencies = array();
+	protected static $ext_dependencies = [];
 	/** @var int Test repeats */
 	protected static $repeats = 10000;
 

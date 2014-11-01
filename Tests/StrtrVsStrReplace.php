@@ -33,7 +33,7 @@ class StrtrVsStrReplace extends TestApplication
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
-			$result = strtr($namespace, array('\\' => DIRECTORY_SEPARATOR));
+			$result = strtr($namespace, ['\\' => DIRECTORY_SEPARATOR]);
 			Timer::stop();
 			$bar->update($i);
 		}
