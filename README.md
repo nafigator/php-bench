@@ -41,3 +41,7 @@ Run test:
 
 	./test CloneVsNew
 	./test IncludeVsRequire
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/nafigator/php-bench/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
