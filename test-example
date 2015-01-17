@@ -41,14 +41,14 @@ $conn = new PdoConnection('master');
 
 $conn->setDsn('mysql:host=localhost;dbname=dbname;charset=utf8')
 	->setUserName('user')
-	->setPassword('password');
+	->setPassword('password')
+	->setOptions([
+		PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+		PDO::ATTR_EMULATE_PREPARES => false
+	]);
 $pool->addConnection($conn, true);
 PdoAdapter::setPool($pool);
-PdoAdapter::addCall('setAttribute', [PDO::ATTR_EMULATE_PREPARES, false]);
-PdoAdapter::addCall(
-	'setAttribute',
-	[PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC]
-);
 Db::setAdapter(PdoAdapter::instance());
 
 if ($argc < 2) {
