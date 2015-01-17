@@ -5,7 +5,7 @@
  *
  * PHP version 5.4+
  *
- * @author  Yancharuk Alexander <alex@itvault.info>
+ * @author  Yancharuk Alexander <alex at itvault dot info>
  * @date    Пнд Сен 16 15:31:22 2013
  * @copyright The BSD 3-Clause License
  */
@@ -18,7 +18,7 @@ use Veles\Tools\Timer;
 
 /**
  * Class ListVsSubstr
- * @author  Yancharuk Alexander <alex@itvault.info>
+ * @author  Yancharuk Alexander <alex at itvault dot info>
  */
 class ListVsSubstr extends TestApplication
 {

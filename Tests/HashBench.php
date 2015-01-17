@@ -5,7 +5,7 @@
  *
  * PHP version 5.4+
  *
- * @author  Alexander Yancharuk <alex@itvault.info>
+ * @author  Alexander Yancharuk <alex at itvault dot info>
  * @date    Sat Sep 20 03:37:20 2014
  * @copyright The BSD 3-Clause License.
  */
@@ -19,7 +19,7 @@ use Application\TestApplication;
 /**
  * Class HashBench
  *
- * @author Alexander Yancharuk <alex@itvault.info>
+ * @author Alexander Yancharuk <alex at itvault dot info>
  */
 class HashBench extends TestApplication
 {

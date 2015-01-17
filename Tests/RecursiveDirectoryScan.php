@@ -5,7 +5,7 @@
  *
  * PHP version 5.4+
  *
- * @author  Alexander Yancharuk <alex@itvault.info>
+ * @author  Alexander Yancharuk <alex at itvault dot info>
  * @date    Thu Aug 14 11:12:31 2014
  * @copyright The BSD 3-Clause License.
  */
@@ -19,7 +19,7 @@ use Veles\Tools\Timer;
 /**
  * Class RecursiveDirectoryScan
  *
- * @author Alexander Yancharuk <alex@itvault.info>
+ * @author Alexander Yancharuk <alex at itvault dot info>
  */
 class RecursiveDirectoryScan extends TestApplication
 {

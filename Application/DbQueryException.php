@@ -6,7 +6,7 @@
  *
  * PHP version 5.4+
  *
- * @author  Yancharuk Alexander <alex@itvault.info>
+ * @author  Yancharuk Alexander <alex at itvault dot info>
  * @date    Чтв Ноя 21 18:05:22 2013
  * @copyright The BSD 3-Clause License.
  */
@@ -18,7 +18,7 @@ use Veles\Tools\CliColor;
 /**
  * Class DbQueryException
  *
- * @author  Yancharuk Alexander <alex@itvault.info>
+ * @author  Yancharuk Alexander <alex at itvault dot info>
  */
 class DbQueryException extends \Exception
 {

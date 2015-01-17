@@ -5,7 +5,7 @@
  *
  * PHP version 5.4+
  *
- * @author  Yancharuk Alexander <alex@itvault.info>
+ * @author  Yancharuk Alexander <alex at itvault dot info>
  * @date    Tue Sep 24 17:34:28 2013
  * @copyright The BSD 3-Clause License
  */
@@ -18,7 +18,7 @@ use Veles\Tools\Timer;
 
 /**
  * Class ArrayKeyVsIsset
- * @author  Yancharuk Alexander <alex@itvault.info>
+ * @author  Yancharuk Alexander <alex at itvault dot info>
  */
 class ArrayKeyVsIsset extends TestApplication
 {

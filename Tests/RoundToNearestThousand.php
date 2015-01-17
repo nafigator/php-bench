@@ -6,7 +6,7 @@
  *
  * PHP version 5.4+
  *
- * @author  Alexander Yancharuk <alex@itvault.info>
+ * @author  Alexander Yancharuk <alex at itvault dot info>
  * @date    Wed Jan 01 11:12:36 2014
  * @copyright The BSD 3-Clause License.
  */
@@ -20,7 +20,7 @@ use Veles\Tools\Timer;
 /**
  * Class RoundToNearestThousand
  *
- * @author Alexander Yancharuk <alex@itvault.info>
+ * @author Alexander Yancharuk <alex at itvault dot info>
  */
 class RoundToNearestThousand extends TestApplication
 {

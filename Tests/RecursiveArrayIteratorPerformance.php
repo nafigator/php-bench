@@ -5,7 +5,7 @@
  *
  * PHP version 5.4+
  *
- * @author  Alexander Yancharuk <alex@itvault.info>
+ * @author  Alexander Yancharuk <alex at itvault dot info>
  * @date    Thu Dec 12 10:06:42 2013
  * @copyright The BSD 3-Clause License.
  */
@@ -21,7 +21,7 @@ use Veles\Tools\Timer;
 /**
  * Class RecursiveArrayIteratorPerformance
  *
- * @author Alexander Yancharuk <alex@itvault.info>
+ * @author Alexander Yancharuk <alex at itvault dot info>
  */
 class RecursiveArrayIteratorPerformance extends TestApplication
 {

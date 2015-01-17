@@ -5,7 +5,7 @@
  *
  * PHP version 5.4+
  *
- * @author  Alexander Yancharuk <alex@itvault.info>
+ * @author  Alexander Yancharuk <alex at itvault dot info>
  * @date    Sun Dec 29 12:18:22 2013
  * @copyright The BSD 3-Clause License.
  */
@@ -19,7 +19,7 @@ use Veles\Tools\Timer;
 /**
  * Class CompareISO8601Dates
  *
- * @author Alexander Yancharuk <alex@itvault.info>
+ * @author Alexander Yancharuk <alex at itvault dot info>
  */
 class CompareISO8601Dates extends TestApplication
 {

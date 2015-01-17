@@ -5,7 +5,7 @@
  *
  * PHP version 5.4+
  *
- * @author  Alexander Yancharuk <alex@itvault.info>
+ * @author  Alexander Yancharuk <alex at itvault dot info>
  * @date    Tue Jan 28 11:59:34 2014
  * @copyright The BSD 3-Clause License.
  */
@@ -22,7 +22,7 @@ use Veles\Tools\Timer;
 /**
  * Class PdoEmulatedPlaceholders
  *
- * @author Alexander Yancharuk <alex@itvault.info>
+ * @author Alexander Yancharuk <alex at itvault dot info>
  */
 class PdoEmulatedPlaceholders extends TestApplication
 {

@@ -5,7 +5,7 @@
  *
  * PHP version 5.4+
  *
- * @author  Yancharuk Alexander <alex@itvault.info>
+ * @author  Yancharuk Alexander <alex at itvault dot info>
  * @date    2013-08-04 10:16
  * @copyright The BSD 3-Clause License
  */
@@ -19,7 +19,7 @@ use Veles\Tools\Timer;
 /**
  * Class IncludeVsRequire
  *
- * @author  Yancharuk Alexander <alex@itvault.info>
+ * @author  Yancharuk Alexander <alex at itvault dot info>
  */
 class IncludeVsRequire extends TestApplication
 {
