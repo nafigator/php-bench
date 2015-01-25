@@ -31,10 +31,10 @@ class CloneVsNew extends TestApplication
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
-			$myobj1=new \stdClass();
-			$myobj2=new \stdClass();
-			$myobj3=new \stdClass();
-			$myobj4=new \stdClass();
+			$myobj1 = new \stdClass();
+			$myobj2 = new \stdClass();
+			$myobj3 = new \stdClass();
+			$myobj4 = new \stdClass();
 			Timer::stop();
 			$bar->update($i);
 		}
