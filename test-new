@@ -9,7 +9,7 @@ if ($argc < 2) {
 $test_name = $argv[1];
 $test_cnt  = isset($argv[2]) ? $argv[2] : 2;
 $file_name = "$test_name.php";
-$file_path = dirname(__FILE__) . "/Tests/$file_name";
+$file_path = __DIR__ . "/Tests/$file_name";
 $user_name = trim(exec('git config user.name'));
 $user_mail = trim(exec('git config user.email'));
 $license   = 'The BSD 3-Clause License.';
