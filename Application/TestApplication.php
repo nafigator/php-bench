@@ -155,6 +155,8 @@ class TestApplication extends Application
 	 */
 	final public static function addResult($name, $value)
 	{
+		if ($value < 0.000001) $value = 0.000001;
+
 		self::$results[$name] = $value;
 	}
 }
