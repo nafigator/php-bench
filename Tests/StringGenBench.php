@@ -31,7 +31,7 @@ class StringGenBench extends TestApplication
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
-			genStrSuffle();
+			genStrShuffle();
 			Timer::stop();
 			$bar->update($i);
 		}
@@ -52,7 +52,7 @@ class StringGenBench extends TestApplication
 	}
 }
 
-function genStrSuffle(
+function genStrShuffle(
 	$length  = 22,
 	$letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789./'
 ) {
