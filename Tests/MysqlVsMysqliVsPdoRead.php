@@ -80,6 +80,24 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		$bar = new CliProgressBar($repeats);
 
 		Timer::reset();
+		$link = mysqli_connect(
+			self::$host, self::$user, self::$password, self::$database
+		);
+		for ($i = 1; $i <= $repeats; ++$i) {
+			$result = [];
+			Timer::start();
+			$res = mysqli_query($link, $sql);
+			while ($row = mysqli_fetch_row($res)) $result[] = $row;
+			Timer::stop();
+			$bar->update($i);
+		}
+
+		mysqli_close($link);
+		self::addResult('Non-object MySQLi', Timer::get());
+
+		$bar = new CliProgressBar($repeats);
+
+		Timer::reset();
 		$dsn = 'mysql:dbname=' . self::$database . ';'
 			 . 'host=' . self::$host . ';'
 			 . 'charset=utf8';
