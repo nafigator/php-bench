@@ -45,18 +45,18 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		$sql = 'SELECT * FROM test';
 		$bar = new CliProgressBar($repeats);
 
-		$link = mysql_connect(self::$host, self::$user, self::$password);
-		mysql_select_db(self::$database);
+		$link = @mysql_connect(self::$host, self::$user, self::$password);
+		@mysql_select_db(self::$database);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			$result = [];
 			Timer::start();
-			$res = mysql_query($sql, $link);
-			while ($row = mysql_fetch_assoc($res)) $result[] = $row;
+			$res = @mysql_query($sql, $link);
+			while ($row = @mysql_fetch_assoc($res)) $result[] = $row;
 			Timer::stop();
 			$bar->update($i);
 		}
 
-		mysql_free_result($res);
+		@mysql_free_result($res);
 		self::addResult('MySQL', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
