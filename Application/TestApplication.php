@@ -31,6 +31,8 @@ class TestApplication extends Application
 	protected static $ext_dependencies = [];
 	/** @var int Test repeats */
 	protected static $repeats = 10000;
+	/** @var string Result output format */
+	protected static $result_format = "%-16s%-16s%-16s%-16s\n";
 
 	/**
 	 * @param int $repeats
@@ -97,25 +99,19 @@ class TestApplication extends Application
 		$results = self::getResults();
 		asort($results);
 		$best = key($results);
-		$string = new CliColor;
 
 		printf(
-			"%-16s%-16s%-16s%-16s\n",
+			static::$result_format,
 			'Test name', 'Repeats', 'Result', 'Performance'
 		);
 
 		foreach ($results as $name => $value) {
-			$color = ($name === $best || $results[$best] === $value)
-				? 'green' : 'red';
-
 			$percent = self::getPercentDiff($results[$best], $value);
 			$value   = number_format($value, 6);
 
-			$string->setColor($color);
-			$string->setString($value);
 			printf(
-				"%-16s%-16s%-27s%-16s\n",
-				$name, self::getRepeats(), $string . ' sec', $percent . '%'
+				static::$result_format,
+				$name, self::getRepeats(), $value . ' sec', $percent . '%'
 			);
 		}
 	}

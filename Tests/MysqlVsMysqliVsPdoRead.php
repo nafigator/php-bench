@@ -31,6 +31,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 	protected static $ext_dependencies = ['pdo_mysql', 'mysqli', 'mysql'];
 
 	protected static $repeats = 1000;
+	protected static $result_format = "%-30s%-16s%-16s%-16s\n";
 
 	private static $user = 'root';
 	private static $host = 'localhost';
