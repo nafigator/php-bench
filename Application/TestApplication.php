@@ -99,6 +99,7 @@ class TestApplication extends Application
 		$results = self::getResults();
 		asort($results);
 		$best = key($results);
+		$string = new CliColor;
 
 		printf(
 			static::$result_format,
@@ -106,14 +107,33 @@ class TestApplication extends Application
 		);
 
 		foreach ($results as $name => $value) {
+			$color = ($name === $best || $results[$best] === $value)
+				? 'green' : 'red';
 			$percent = self::getPercentDiff($results[$best], $value);
 			$value   = number_format($value, 6);
+			$string->setColor($color);
+			$string->setString($value);
 
 			printf(
-				static::$result_format,
-				$name, self::getRepeats(), $value . ' sec', $percent . '%'
+				self::getFixedFormat(),
+				$name, self::getRepeats(), $string . ' sec', $percent . '%'
 			);
 		}
+	}
+
+	/**
+	 * Printf format cant correctly align shell-colored string, so
+	 * fix this by adding additional spaces
+	 */
+	private static function getFixedFormat()
+	{
+		$regexp = '/^%-\d+s%-\d+s%-(\d+)s%-\d+s\n$/';
+		$match_result = preg_match($regexp, static::$result_format, $matches);
+		$position = (1 === $match_result) ? $matches[1] + 11 : 16;
+
+		return preg_replace('/^(%-\d+s%-\d+s%-)(\d+)(s%-\d+s\n)$/',
+			'${1}' . $position . '$3', static::$result_format
+		);
 	}
 
 	/**
