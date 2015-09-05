@@ -42,7 +42,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		self::prepareTables();
 		$repeats = self::getRepeats();
 
-		$sql = 'SELECT * FROM test';
+		$sql = 'SELECT txt FROM test';
 		$bar = new CliProgressBar($repeats);
 
 		$link = @mysql_connect(self::$host, self::$user, self::$password);
