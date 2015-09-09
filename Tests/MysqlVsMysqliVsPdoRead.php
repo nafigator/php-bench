@@ -132,6 +132,8 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 
 		self::addResult('PDO', Timer::get());
 		$bar = new CliProgressBar($repeats);
+		$pdo = new PDO($dsn, self::$user, self::$password);
+		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
 		Timer::reset();
 		for ($i = 1; $i <= $repeats; ++$i) {
@@ -143,6 +145,23 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		}
 
 		self::addResult('PDO fetchAll()', Timer::get());
+
+		$bar = new CliProgressBar($repeats);
+		$pdo = new PDO($dsn, self::$user, self::$password);
+		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+		Timer::reset();
+		for ($i = 1; $i <= $repeats; ++$i) {
+			Timer::start();
+			$stmt = $pdo->prepare($sql);
+			$stmt->execute();
+			foreach ($stmt as $row) $result[] = $row;
+			Timer::stop();
+			$bar->update($i);
+			$result = [];
+		}
+
+		self::addResult('PDO execute()', Timer::get());
 		self::cleanup();
 	}
 
