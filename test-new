@@ -11,21 +11,24 @@ $test_cnt  = isset($argv[2]) ? $argv[2] : 2;
 $file_name = "$test_name.php";
 $file_path = __DIR__ . "/Tests/$file_name";
 $user_name = trim(exec('git config user.name'));
-$user_mail = trim(exec('git config user.email'));
+$user_mail = 'alex at itvault dot info';
 $license   = 'The BSD 3-Clause License.';
+$lic_link  = 'https://tldrlegal.com/license/bsd-3-clause-license-(revised)';
 $curr_date = date('D M d H:i:s Y');
 
 $content .= <<<EOT
 <?php
 /**
  * @todo <Test description here>
- * @file    $file_name
+ * @file      $file_name
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
- * @author  $user_name <$user_mail>
- * @date    $curr_date
- * @copyright $license
+ * @author    $user_name <$user_mail>
+ * @copyright © 2013-2015 $user_name
+ * @date      $curr_date
+ * @license   $license
+ *            <$lic_link>
  */
 
 namespace Tests;
