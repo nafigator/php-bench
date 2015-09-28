@@ -2,13 +2,14 @@
 /**
  * Performance test of is_a() and instanceof
  *
- * @file    IsAVsInstanceOf.php
+ * @file      IsAVsInstanceOf.php
  *
  * PHP version 5.4+
  *
- * @author  Alexander Yancharuk <alex at itvault dot info>
- * @date    Wed Jan 01 11:53:52 2014
+ * @author    Alexander Yancharuk <alex at itvault dot info>
+ * @date      Wed Jan 01 11:53:52 2014
  * @copyright The BSD 3-Clause License.
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

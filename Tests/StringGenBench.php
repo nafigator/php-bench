@@ -1,13 +1,15 @@
 <?php
 /**
  * Check performance of two functions that make strings
- * @file    StringGenBench.php
+ *
+ * @file      StringGenBench.php
  *
  * PHP version 5.4+
  *
- * @author  Yancharuk Alexander <alex at itvault dot info>
- * @date    Втр Сен 10 16:03:47 2013
+ * @author    Yancharuk Alexander <alex at itvault dot info>
+ * @date      Втр Сен 10 16:03:47 2013
  * @copyright The BSD 3-Clause License
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

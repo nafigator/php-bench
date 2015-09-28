@@ -1,13 +1,15 @@
 <?php
 /**
  * Check what is faster if or and
- * @file    IfVsAnd.php
+ *
+ * @file      IfVsAnd.php
  *
  * PHP version 5.4+
  *
- * @author  Yancharuk Alexander <alex at itvault dot info>
- * @date    2013-08-24 14:01
+ * @author    Yancharuk Alexander <alex at itvault dot info>
+ * @date      2013-08-24 14:01
  * @copyright The BSD 3-Clause License
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

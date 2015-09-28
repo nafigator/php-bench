@@ -1,13 +1,15 @@
 <?php
 /**
  * Check what is faster array_search or in_array
- * @file    ArraySearchVsInArray.php
+ *
+ * @file      ArraySearchVsInArray.php
  *
  * PHP version 5.4+
  *
- * @author  Alexander Yancharuk <alex at itvault dot info>
- * @date    Tue Dec 31 17:30:46 2013
+ * @author    Alexander Yancharuk <alex at itvault dot info>
+ * @date      Tue Dec 31 17:30:46 2013
  * @copyright The BSD 3-Clause License.
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

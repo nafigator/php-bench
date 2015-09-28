@@ -1,13 +1,15 @@
 <?php
 /**
  * Check what is faster new or clone
- * @file    CloneVsNew.php
+ *
+ * @file      CloneVsNew.php
  *
  * PHP version 5.4+
  *
- * @author  Yancharuk Alexander <alex at itvault dot info>
- * @date    2013-08-04 10:16
+ * @author    Yancharuk Alexander <alex at itvault dot info>
+ * @date      2013-08-04 10:16
  * @copyright The BSD 3-Clause License
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

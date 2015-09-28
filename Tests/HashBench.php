@@ -1,13 +1,15 @@
 <?php
 /**
  * Benchmark PHP hash algorithms
- * @file    HashBench.php
+ *
+ * @file      HashBench.php
  *
  * PHP version 5.4+
  *
- * @author  Alexander Yancharuk <alex at itvault dot info>
- * @date    Sat Sep 20 03:37:20 2014
+ * @author    Alexander Yancharuk <alex at itvault dot info>
+ * @date      Sat Sep 20 03:37:20 2014
  * @copyright The BSD 3-Clause License.
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

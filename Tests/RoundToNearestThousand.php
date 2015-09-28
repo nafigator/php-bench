@@ -2,13 +2,14 @@
 /**
  * Performance check for round to nearest thousand algorithms
  *
- * @file    RoundToNearestThousand.php
+ * @file      RoundToNearestThousand.php
  *
  * PHP version 5.4+
  *
- * @author  Alexander Yancharuk <alex at itvault dot info>
- * @date    Wed Jan 01 11:12:36 2014
+ * @author    Alexander Yancharuk <alex at itvault dot info>
+ * @date      Wed Jan 01 11:12:36 2014
  * @copyright The BSD 3-Clause License.
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

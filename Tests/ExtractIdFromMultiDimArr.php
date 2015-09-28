@@ -2,13 +2,14 @@
 /**
  * Find the fastest way to extract ID from multi-dimension array
  *
- * @file    ExtractIdFromMultiDimArr.php
+ * @file      ExtractIdFromMultiDimArr.php
  *
  * PHP version 5.4+
  *
- * @author  Yancharuk Alexander <alex at itvault dot info>
- * @date    Сбт Фев 16 17:01:16 2013
+ * @author    Yancharuk Alexander <alex at itvault dot info>
+ * @date      Сбт Фев 16 17:01:16 2013
  * @copyright The BSD 3-Clause License.
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

@@ -5,13 +5,14 @@
  * Autoloaders code was slightly adopted for test, but that adaptation does not
  * have huge impact on result.
  *
- * @file    Autoloaders.php
+ * @file      Autoloaders.php
  *
  * PHP version 5.3.9+
  *
- * @author  Alexander Yancharuk <alex@itvault.info>
- * @date    Tue May 19 05:59:24 2015
+ * @author    Alexander Yancharuk <alex@itvault.info>
+ * @date      Tue May 19 05:59:24 2015
  * @copyright The BSD 3-Clause License.
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

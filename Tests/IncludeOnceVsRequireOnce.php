@@ -1,13 +1,15 @@
 <?php
 /**
  * Check what is faster include or require
- * @file    IncludeOnceVsRequireOnce.php
+ *
+ * @file      IncludeOnceVsRequireOnce.php
  *
  * PHP version 5.4+
  *
- * @author  Yancharuk Alexander <alex at itvault dot info>
- * @date    2013-08-31 16:43
+ * @author    Yancharuk Alexander <alex at itvault dot info>
+ * @date      2013-08-31 16:43
  * @copyright The BSD 3-Clause License
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

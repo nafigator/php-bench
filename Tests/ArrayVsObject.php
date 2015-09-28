@@ -1,13 +1,15 @@
 <?php
 /**
  * Check what is faster object properties initialization or array elements
- * @file    ArrayVsObject.php
+ *
+ * @file      ArrayVsObject.php
  *
  * PHP version 5.4+
  *
- * @author  Yancharuk Alexander <alex at itvault dot info>
- * @date    Tue Sep 24 17:03:53 2013
+ * @author    Yancharuk Alexander <alex at itvault dot info>
+ * @date      Tue Sep 24 17:03:53 2013
  * @copyright The BSD 3-Clause License
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

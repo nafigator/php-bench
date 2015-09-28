@@ -1,13 +1,14 @@
 <?php
 /**
- * @todo <Test description here>
- * @file    FastestIncrement.php
+ * @todo      <Test description here>
+ * @file      FastestIncrement.php
  *
  * PHP version 5.3.9+
  *
- * @author  Yancharuk Alexander <alex@itvault.info>
- * @date    Fri Aug 14 18:02:18 2015
+ * @author    Yancharuk Alexander <alex@itvault.info>
+ * @date      Fri Aug 14 18:02:18 2015
  * @copyright The BSD 3-Clause License.
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

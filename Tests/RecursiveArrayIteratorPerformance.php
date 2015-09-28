@@ -1,13 +1,16 @@
 <?php
 /**
- * Check most efficient algorithm for checking value in multidimensional associative array
- * @file    RecursiveArrayIteratorPerformance.php
+ * Check most efficient algorithm for checking value in multidimensional
+ * associative array
+ *
+ * @file      RecursiveArrayIteratorPerformance.php
  *
  * PHP version 5.4+
  *
- * @author  Alexander Yancharuk <alex at itvault dot info>
- * @date    Thu Dec 12 10:06:42 2013
+ * @author    Alexander Yancharuk <alex at itvault dot info>
+ * @date      Thu Dec 12 10:06:42 2013
  * @copyright The BSD 3-Clause License.
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

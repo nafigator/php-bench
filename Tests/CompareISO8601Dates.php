@@ -1,13 +1,15 @@
 <?php
 /**
  * Check performance of comparing iso8601 dates algorithms
- * @file    CompareISO8601Dates.php
+ *
+ * @file      CompareISO8601Dates.php
  *
  * PHP version 5.4+
  *
- * @author  Alexander Yancharuk <alex at itvault dot info>
- * @date    Sun Dec 29 12:18:22 2013
+ * @author    Alexander Yancharuk <alex at itvault dot info>
+ * @date      Sun Dec 29 12:18:22 2013
  * @copyright The BSD 3-Clause License.
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

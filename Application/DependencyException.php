@@ -2,13 +2,14 @@
 /**
  * Dependency exception class
  *
- * @file    DependencyException.php
+ * @file      DependencyException.php
  *
  * PHP version 5.4+
  *
- * @author  Yancharuk Alexander <alex at itvault dot info>
- * @date    Чтв Ноя 21 15:28:44 2013
+ * @author    Yancharuk Alexander <alex at itvault dot info>
+ * @date      Чтв Ноя 21 15:28:44 2013
  * @copyright The BSD 3-Clause License.
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Application;

@@ -1,13 +1,14 @@
 <?php
 /**
- * @todo <Test description here>
- * @file    FwriteVsFilePutContents.php
+ * @todo      <Test description here>
+ * @file      FwriteVsFilePutContents.php
  *
  * PHP version 5.3.9+
  *
- * @author  Yancharuk Alexander <alex@itvault.info>
- * @date    Wed Aug 19 18:22:36 2015
+ * @author    Yancharuk Alexander <alex@itvault.info>
+ * @date      Wed Aug 19 18:22:36 2015
  * @copyright The BSD 3-Clause License.
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

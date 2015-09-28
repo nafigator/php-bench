@@ -1,13 +1,15 @@
 <?php
 /**
  * What is faster unset in foreach loop or array_diff_key($a, array_flip($b))?
- * @file    ForeachVsArrayDiff.php
+ *
+ * @file      ForeachVsArrayDiff.php
  *
  * PHP version 5.4+
  *
- * @author  Alexander Yancharuk <alex at itvault dot info>
- * @date    Tue Dec 10 10:42:28 2013
+ * @author    Alexander Yancharuk <alex at itvault dot info>
+ * @date      Tue Dec 10 10:42:28 2013
  * @copyright The BSD 3-Clause License.
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;

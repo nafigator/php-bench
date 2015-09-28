@@ -1,13 +1,15 @@
 <?php
 /**
  * What is faster typecasting or function intval()
- * @file    IntvalVsTypeCast.php
+ *
+ * @file      IntvalVsTypeCast.php
  *
  * PHP version 5.4+
  *
- * @author  Alexander Yancharuk <alex at itvault dot info>
- * @date    Thu Apr 03 14:39:45 2014
+ * @author    Alexander Yancharuk <alex at itvault dot info>
+ * @date      Thu Apr 03 14:39:45 2014
  * @copyright The BSD 3-Clause License.
+ *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
 namespace Tests;
