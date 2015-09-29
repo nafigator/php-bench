@@ -90,7 +90,7 @@ class JsonVsSerialize extends TestApplication
  */
 function create3DAssocArray($max = 3, $elements = 100, $dim = 0)
 {
-	$i = 0;
+	$i     = 0;
 	$array = [];
 
 	while (++$i <= $elements) {

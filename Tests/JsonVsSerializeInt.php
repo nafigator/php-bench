@@ -84,11 +84,12 @@ class JsonVsSerializeInt extends TestApplication
  * @param int $max Max dimension
  * @param int $elements Max elements in each dimension
  * @param int $dim Current dimension
+ *
  * @return array
  */
 function create3DNumArray($max = 3, $elements = 100, $dim = 0)
 {
-	$i = 0;
+	$i     = 0;
 	$array = [];
 
 	while (++$i <= $elements) {
