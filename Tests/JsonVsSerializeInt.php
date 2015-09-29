@@ -1,16 +1,13 @@
 <?php
 /**
- * What is the fastest way to convert array to string?
- *
- * Test for json_encode(), var_export(), print_r() and serialize() performance
- *
- * @file      JsonVsSerialize.php
+ * What is the fastest way to convert array with integer values to string?
+ * @file      JsonVsSerializeInt.php
  *
  * PHP version 5.4+
  *
  * @author    Yancharuk Alexander <alex at itvault dot info>
  * @copyright © 2013-2015 Yancharuk Alexander
- * @date      Mon Sep 28 16:56:21 2015
+ * @date      Tue Sep 29 16:05:45 2015
  * @license   The BSD 3-Clause License.
  *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
@@ -22,20 +19,19 @@ use Veles\Tools\Timer;
 use Application\TestApplication;
 
 /**
- * Class JsonVsSerialize
+ * Class JsonVsSerializeInt
  *
  * @author Yancharuk Alexander <alex at itvault dot info>
  */
-class JsonVsSerialize extends TestApplication
+class JsonVsSerializeInt extends TestApplication
 {
     protected static $repeats = 10000;
 
 	final public static function run()
 	{
 		$repeats = self::getRepeats();
-		$i   = 0;
-		$max = 100;
-		while (++$i <= $max) { $array[] = md5('string'); }
+
+		$array = range(100000, 100100);
 
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
