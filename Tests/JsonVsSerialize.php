@@ -43,7 +43,7 @@ class JsonVsSerialize extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('json_encode', Timer::get());
+		self::addResult('json_encode()', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -54,7 +54,7 @@ class JsonVsSerialize extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('serialize', Timer::get());
+		self::addResult('serialize()', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -65,7 +65,7 @@ class JsonVsSerialize extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('var_export', Timer::get());
+		self::addResult('var_export()', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -76,7 +76,7 @@ class JsonVsSerialize extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('print_r', Timer::get());
+		self::addResult('print_r()', Timer::get());
 	}
 }
 
