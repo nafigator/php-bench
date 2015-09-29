@@ -33,9 +33,7 @@ class JsonVsSerialize extends TestApplication
 	final public static function run()
 	{
 		$repeats = self::getRepeats();
-		$i   = 0;
-		$max = 100;
-		while (++$i <= $max) { $array[] = md5('string'); }
+		$array   = create3DAssocArray(3, 3);
 
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
@@ -80,4 +78,29 @@ class JsonVsSerialize extends TestApplication
 
 		self::addResult('print_r', Timer::get());
 	}
+}
+
+/**
+ * Create x-dimensional associative array
+ *
+ * @param int $max Max dimension
+ * @param int $elements Max elements in each dimension
+ * @param int $dim Current dimension
+ * @return array
+ */
+function create3DAssocArray($max = 3, $elements = 100, $dim = 0)
+{
+	$i = 0;
+	$array = [];
+
+	while (++$i <= $elements) {
+		$key = md5(uniqid());
+		$tmp = $dim;
+
+		$array[$key] = ($tmp !== $max)
+			? create3DAssocArray($max, $elements, ++$tmp)
+			: md5(uniqid());
+	}
+
+	return $array;
 }

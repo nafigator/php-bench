@@ -1,6 +1,7 @@
 <?php
 /**
  * What is the fastest way to convert array with integer values to string?
+ *
  * @file      JsonVsSerializeInt.php
  *
  * PHP version 5.4+
@@ -30,8 +31,7 @@ class JsonVsSerializeInt extends TestApplication
 	final public static function run()
 	{
 		$repeats = self::getRepeats();
-
-		$array = range(100000, 100100);
+		$array   = create3DNumArray(3, 5);
 
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
@@ -76,4 +76,29 @@ class JsonVsSerializeInt extends TestApplication
 
 		self::addResult('print_r', Timer::get());
 	}
+}
+
+/**
+ * Create x-dimensional numeric array
+ *
+ * @param int $max Max dimension
+ * @param int $elements Max elements in each dimension
+ * @param int $dim Current dimension
+ * @return array
+ */
+function create3DNumArray($max = 3, $elements = 100, $dim = 0)
+{
+	$i = 0;
+	$array = [];
+
+	while (++$i <= $elements) {
+		$key = $i;
+		$tmp = $dim;
+
+		$array[$key] = ($tmp !== $max)
+			? create3DNumArray($max, $elements, ++$tmp)
+			: rand();
+	}
+
+	return $array;
 }
