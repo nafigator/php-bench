@@ -8,7 +8,7 @@
  *
  * @author    Yancharuk Alexander <alex at itvault dot info>
  * @date      2013-08-31 16:43
- * @copyright The BSD 3-Clause License
+ * @license   The BSD 3-Clause License
  *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 

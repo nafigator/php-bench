@@ -11,7 +11,7 @@
  * @author    Yancharuk Alexander <alex at itvault dot info>
  * @copyright © 2013-2015 Yancharuk Alexander
  * @date      Mon Sep 28 16:56:21 2015
- * @license   The BSD 3-Clause License.
+ * @license   The BSD 3-Clause License
  *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
