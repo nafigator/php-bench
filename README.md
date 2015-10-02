@@ -1,3 +1,5 @@
+[![GitHub license][License img]][License src]
+
 php-bench
 =========
 
@@ -12,7 +14,8 @@ Console tools for benchmark PHP algorithms.
 
 ###Installation:
 
-	git clone https://github.com/nafigator/php-bench.git .
+	git clone https://github.com/nafigator/php-bench.git
+	cd php-bench
 	git submodule init
 	git submodule update
 
@@ -41,3 +44,6 @@ Run test:
 
 	./test CloneVsNew
 	./test IncludeVsRequire
+
+  [License img]: https://img.shields.io/badge/license-BSD3-brightgreen.svg
+  [License src]: https://tldrlegal.com/license/bsd-3-clause-license-(revised)
