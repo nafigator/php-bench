@@ -108,10 +108,11 @@ class TestApplication extends Application
 		);
 
 		foreach ($results as $name => $value) {
-			$color = ($name === $best || $results[$best] === $value)
-				? 'green' : 'red';
-			$percent = self::getPercentDiff($results[$best], $value);
-			$value   = number_format($value, 6);
+			list($percent, $color) = self::getPercentDiff(
+				$results[$best], $value
+			);
+
+			$value = number_format($value, 6);
 			$string->setColor($color);
 			$string->setString($value);
 
@@ -140,9 +141,10 @@ class TestApplication extends Application
 	/**
 	 * Calculate result percent difference
 	 *
-	 * @param $best float Best test result
-	 * @param $current float Result for comparison
-	 * @return CliColor
+	 * @param int $best    float Best test result
+	 * @param int $current float Result for comparison
+	 *
+	 * @return array [CliColor, string]
 	 */
 	private static function getPercentDiff($best, $current)
 	{
@@ -151,17 +153,24 @@ class TestApplication extends Application
 		$value   = $diff / $percent;
 		$result  = new CliColor;
 
-		if ($value > 0) {
-			$value = number_format($value, 2);
-			$result->setColor('red');
-			$result->setstring("-$value");
+		if ($value > 0 and $value <= 10) {
+			$color  = 'yellow';
+			$value  = number_format($value, 2);
+			$string = "-$value";
+		} elseif ($value > 10) {
+			$color  = 'red';
+			$value  = number_format($value, 2);
+			$string = "-$value";
 		} else {
-			$value = number_format($value, 2);
-			$result->setColor('green');
-			$result->setstring("+$value");
+			$color  = 'green';
+			$value  = number_format($value, 2);
+			$string = "+$value";
 		}
 
-		return $result;
+		$result->setColor($color);
+		$result->setstring($string);
+
+		return [$result, $color];
 	}
 
 	/**
