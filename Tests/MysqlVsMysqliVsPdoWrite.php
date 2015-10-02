@@ -1,15 +1,15 @@
 <?php
 /**
- * Check what is faster MySQL, MySQLi or PDO on simple select queries
+ * Check what is faster MySQL, MySQLi or PDO on simple insert queries
  *
- * @file      MysqlVsMysqliVsPdoRead.php
+ * @file      MysqlVsMysqliVsPdoWrite.php
  *
  * PHP version 5.4+
  *
  * @author    Yancharuk Alexander <alex at itvault dot info>
  * @copyright © 2013-2015 Yancharuk Alexander
- * @date      Fri Sep 27 13:06:09 2013
- * @license   The BSD 3-Clause License
+ * @date      Fri Oct 02 12:33:15 2015
+ * @license   The BSD 3-Clause License.
  *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
 
@@ -24,147 +24,90 @@ use Veles\Tools\CliProgressBar;
 use Veles\Tools\Timer;
 
 /**
- * Class MysqlVsMysqliVsPdoRead
+ * Class MysqlVsMysqliVsPdoWrite
  *
- * @author  Yancharuk Alexander <alex at itvault dot info>
+ * @author Yancharuk Alexander <alex at itvault dot info>
  */
-class MysqlVsMysqliVsPdoRead extends TestApplication
+class MysqlVsMysqliVsPdoWrite extends TestApplication
 {
 	protected static $class_dependencies = ['PDO', 'MySQLi'];
 	protected static $ext_dependencies = ['pdo_mysql', 'mysqli', 'mysql'];
-
-	protected static $repeats = 1000;
-	protected static $result_format = "%-30s%-16s%-16s%-16s\n";
 
 	private static $user = 'root';
 	private static $host = 'localhost';
 	private static $password = '';
 	private static $database = 'php_bench_test';
 
+    protected static $repeats = 10000;
+	protected static $result_format = "%-25s%-16s%-16s%-16s\n";
+
 	final public static function run()
 	{
 		self::prepareTables();
 		$repeats = self::getRepeats();
 
-		$sql = 'SELECT txt FROM test';
 		$bar = new CliProgressBar($repeats);
+		$value = uniqid();
+		$sql = "INSERT INTO test (txt) VALUES ('$value')";
 
 		$link = @mysql_connect(self::$host, self::$user, self::$password);
 		@mysql_select_db(self::$database);
 		for ($i = 1; $i <= $repeats; ++$i) {
-			$result = [];
 			Timer::start();
-			$res = @mysql_query($sql, $link);
-			while ($row = @mysql_fetch_assoc($res)) $result[] = $row;
+			@mysql_query($sql, $link);
 			Timer::stop();
 			$bar->update($i);
 		}
 
-		@mysql_free_result($res);
 		self::addResult('MySQL', Timer::get());
 
+		Timer::reset();
 		$bar = new CliProgressBar($repeats);
 
-		Timer::reset();
 		$mysqli = new mysqli(
 			self::$host, self::$user, self::$password, self::$database
 		);
 		for ($i = 1; $i <= $repeats; ++$i) {
-			$result = [];
 			Timer::start();
-			$res = $mysqli->query($sql);
-			while ($row = $res->fetch_assoc()) $result[] = $row;
+			$mysqli->query($sql);
 			Timer::stop();
 			$bar->update($i);
 		}
 
-		$res->free();
 		self::addResult('MySQLi', Timer::get());
 
+		Timer::reset();
 		$bar = new CliProgressBar($repeats);
 
-		Timer::reset();
 		$link = mysqli_connect(
 			self::$host, self::$user, self::$password, self::$database
 		);
 		for ($i = 1; $i <= $repeats; ++$i) {
-			$result = [];
 			Timer::start();
-			$res = mysqli_query($link, $sql);
-			while ($row = mysqli_fetch_row($res)) $result[] = $row;
+			mysqli_query($link, $sql);
 			Timer::stop();
 			$bar->update($i);
 		}
 
-		mysqli_close($link);
 		self::addResult('Non-object MySQLi', Timer::get());
 
+		Timer::reset();
 		$bar = new CliProgressBar($repeats);
 
-		Timer::reset();
-		$link = mysqli_connect(
-			self::$host, self::$user, self::$password, self::$database
-		);
-		for ($i = 1; $i <= $repeats; ++$i) {
-			$result = [];
-			Timer::start();
-			$res = mysqli_query($link, $sql, MYSQLI_USE_RESULT);
-			while ($row = mysqli_fetch_row($res)) $result[] = $row;
-			Timer::stop();
-			$bar->update($i);
-		}
-
-		mysqli_close($link);
-		self::addResult('Non-object unbuffered MySQLi', Timer::get());
-
-		$bar = new CliProgressBar($repeats);
-
-		Timer::reset();
 		$dsn = 'mysql:dbname=' . self::$database . ';'
-			 . 'host=' . self::$host . ';'
-			 . 'charset=utf8';
+			. 'host=' . self::$host . ';'
+			. 'charset=utf8';
 		$pdo = new PDO($dsn, self::$user, self::$password);
 		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 		for ($i = 1; $i <= $repeats; ++$i) {
-			$result = [];
 			Timer::start();
-			foreach ($pdo->query($sql) as $row) $result[] = $row;
+			$pdo->query($sql);
 			Timer::stop();
 			$bar->update($i);
 		}
 
 		self::addResult('PDO', Timer::get());
-		$bar = new CliProgressBar($repeats);
-		$pdo = new PDO($dsn, self::$user, self::$password);
-		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-		Timer::reset();
-		for ($i = 1; $i <= $repeats; ++$i) {
-			Timer::start();
-			$stmt = $pdo->query($sql);
-			$result = $stmt->fetchAll();
-			Timer::stop();
-			$bar->update($i);
-		}
-
-		self::addResult('PDO fetchAll()', Timer::get());
-
-		$bar = new CliProgressBar($repeats);
-		$pdo = new PDO($dsn, self::$user, self::$password);
-		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
-		Timer::reset();
-		for ($i = 1; $i <= $repeats; ++$i) {
-			Timer::start();
-			$stmt = $pdo->prepare($sql);
-			$stmt->execute();
-			foreach ($stmt as $row) $result[] = $row;
-			Timer::stop();
-			$bar->update($i);
-			$result = [];
-		}
-
-		self::addResult('PDO execute()', Timer::get());
 		self::cleanup();
 	}
 
@@ -202,6 +145,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 				"Query Error ($mysqli->errno)\n$mysqli->error"
 			);
 		}
+
 
 		$arr = [];
 		$i = 0;
