@@ -2,7 +2,6 @@
 
 php-bench
 =========
-***
 
 Console tools for benchmark PHP algorithms.
 
