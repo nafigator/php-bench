@@ -25,6 +25,7 @@ use Veles\Tools\Timer;
 class ArrayKeyVsIsset extends TestApplication
 {
 	protected static $repeats = 10000;
+	protected static $result_format = "%-20s%-16s%-16s%-16s\n";
 
 	final public static function run()
 	{
@@ -39,7 +40,7 @@ class ArrayKeyVsIsset extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('arr_key_ex', Timer::get());
+		self::addResult('array_key_exists', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
