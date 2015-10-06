@@ -2,6 +2,7 @@
 
 php-bench
 =========
+***
 
 Console tools for benchmark PHP algorithms.
 
@@ -44,6 +45,9 @@ Run test:
 
 	./test CloneVsNew
 	./test IncludeVsRequire
+***
+If you'd like to see other PHP-algorithm comparison in this collection, feel
+free to create a new issue. Thanks!
 
   [License img]: https://img.shields.io/badge/license-BSD3-brightgreen.svg
   [License src]: https://tldrlegal.com/license/bsd-3-clause-license-(revised)
