@@ -10,7 +10,6 @@ Console tools for benchmark PHP algorithms.
 ###Requirements:
 
 * PHP CLI 5.4+
-* Bash shell
 
 ###Installation:
 

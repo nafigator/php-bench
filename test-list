@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 for i in $(ls Tests); do
 	echo ${i%.*}
