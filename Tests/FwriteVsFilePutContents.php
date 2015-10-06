@@ -4,7 +4,7 @@
  *
  * @file      FwriteVsFilePutContents.php
  *
- * PHP version 5.3.9+
+ * PHP version 5.4+
  *
  * @author    Yancharuk Alexander <alex@itvault.info>
  * @date      Wed Aug 19 18:22:36 2015
