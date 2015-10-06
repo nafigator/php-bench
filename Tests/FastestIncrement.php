@@ -1,6 +1,7 @@
 <?php
 /**
- * @todo      <Test description here>
+ * Find which increment syntax is fastest
+ *
  * @file      FastestIncrement.php
  *
  * PHP version 5.3.9+
