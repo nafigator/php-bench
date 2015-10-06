@@ -1,6 +1,7 @@
 <?php
 /**
- * @todo      <Test description here>
+ * Check performance file_put_contents function and its analog fwrite
+ *
  * @file      FwriteVsFilePutContents.php
  *
  * PHP version 5.3.9+
