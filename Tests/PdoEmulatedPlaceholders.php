@@ -14,7 +14,10 @@
 
 namespace Tests;
 
+use Application\DbConnectException;
+use Application\DbQueryException;
 use Application\TestApplication;
+use mysqli;
 use PDO;
 use Veles\DataBase\Adapters\PdoAdapter;
 use Veles\DataBase\Db;
@@ -28,7 +31,13 @@ use Veles\Tools\Timer;
  */
 class PdoEmulatedPlaceholders extends TestApplication
 {
+	protected $class_dependencies = ['PDO', 'MySQLi'];
+	protected $ext_dependencies = ['pdo_mysql', 'mysqli'];
+
     protected $repeats = 1000;
+	private $user = 'root';
+	private $host = 'localhost';
+	private $password = '';
 	private $database = 'php_bench_test';
 
 	public function run()
@@ -79,18 +88,43 @@ class PdoEmulatedPlaceholders extends TestApplication
 
 	public function prepareTables()
 	{
-		$sql = 'CREATE DATABASE IF NOT EXISTS ' . $this->database;
-		Db::query($sql);
+		$mysqli = new mysqli($this->host, $this->user, $this->password);
+		if ($mysqli->connect_errno) {
+			throw new DbConnectException(
+				"Connect Error ($mysqli->connect_errno)\n$mysqli->connect_error"
+			);
+		}
+
+		$mysqli->query('CREATE DATABASE IF NOT EXISTS ' . $this->database);
+		if ($mysqli->errno) {
+			throw new DbQueryException(
+				"Query Error ($mysqli->errno)\n$mysqli->error"
+			);
+		}
+
+		$mysqli->select_db($this->database);
+
 		$sql = "CREATE TABLE IF NOT EXISTS test (
 			id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 			txt CHAR(50) NOT NULL DEFAULT ''
 		) ENGINE INNODB";
-		Db::query($sql);
+		$mysqli->query($sql);
 	}
 
 	public function cleanup()
 	{
-		$sql = 'DROP TABLE test';
-		Db::query($sql);
+		$mysqli = new mysqli($this->host, $this->user, $this->password);
+		if ($mysqli->connect_errno) {
+			throw new DbConnectException(
+				"Connect Error ($mysqli->connect_errno)\n$mysqli->connect_error"
+			);
+		}
+
+		$mysqli->query('DROP DATABASE ' . $this->database);
+		if ($mysqli->errno) {
+			throw new DbQueryException(
+				"Query Error ($mysqli->errno)\n$mysqli->error"
+			);
+		}
 	}
 }
