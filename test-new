@@ -44,7 +44,7 @@ use Application\TestApplication;
  */
 class $test_name extends TestApplication
 {
-    protected static \$repeats = 10000;
+    protected \$repeats = 10000;
 
 	public function run()
 	{
