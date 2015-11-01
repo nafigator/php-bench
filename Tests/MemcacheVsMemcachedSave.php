@@ -27,14 +27,14 @@ use Veles\Tools\Timer;
 */
 class MemcacheVsMemcachedSave extends TestApplication
 {
-	protected static $class_dependencies = ['Memcache', 'Memcached'];
-	protected static $ext_dependencies = ['Memcache', 'Memcached'];
+	protected $class_dependencies = ['Memcache', 'Memcached'];
+	protected $ext_dependencies = ['Memcache', 'Memcached'];
 
 	protected $repeats = 10000;
 
 	public function run()
 	{
-		self::initCache();
+		$this->initCache();
 
 		$repeats = $this->getRepeats();
 		$bar = new CliProgressBar($repeats);
@@ -65,7 +65,7 @@ class MemcacheVsMemcachedSave extends TestApplication
 		Cache::clear();
 	}
 
-	private static function initCache()
+	private function initCache()
 	{
 		MemcachedAdapter::addCall('addServer', ['localhost', 11211]);
 		MemcacheAdapter::addCall('addServer', ['localhost', 11211]);

@@ -56,10 +56,11 @@ if ($argc < 2) {
 	throw new Exception('Enter classname as parameter!');
 }
 
-$application = "Tests\\$argv[1]";
+$app_class = "Tests\\$argv[1]";
+$application = new $app_class;
 /** @noinspection PhpUndefinedMethodInspection */
-$application::testDependencies();
+$application->testDependencies();
 /** @noinspection PhpUndefinedMethodInspection */
-$application::run();
+$application->run();
 /** @noinspection PhpUndefinedMethodInspection */
-$application::showResults();
+$application->showResults();

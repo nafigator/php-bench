@@ -30,8 +30,8 @@ use Veles\Tools\Timer;
  */
 class MysqlVsMysqliVsPdoRead extends TestApplication
 {
-	protected static $class_dependencies = ['PDO', 'MySQLi'];
-	protected static $ext_dependencies = ['pdo_mysql', 'mysqli', 'mysql'];
+	protected $class_dependencies = ['PDO', 'MySQLi'];
+	protected $ext_dependencies = ['pdo_mysql', 'mysqli', 'mysql'];
 
 	protected $repeats = 1000;
 	protected $result_format = "%-30s%-16s%-16s%-16s\n";
@@ -43,7 +43,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 
 	public function run()
 	{
-		self::prepareTables();
+		$this->prepareTables();
 		$repeats = $this->getRepeats();
 
 		$sql = 'SELECT txt FROM test';
@@ -165,7 +165,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		}
 
 		$this->addResult('PDO execute()', Timer::get());
-		self::cleanup();
+		$this->cleanup();
 	}
 
 	/**

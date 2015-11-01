@@ -29,11 +29,11 @@ use Veles\Tools\Timer;
 class PdoEmulatedPlaceholders extends TestApplication
 {
     protected $repeats = 1000;
-	private static $database = 'php_bench_test';
+	private $database = 'php_bench_test';
 
 	public function run()
 	{
-		self::prepareTables();
+		$this->prepareTables();
 		$repeats = $this->getRepeats();
 		$value1 = 'string one';
 		$value2 = 'string two';
@@ -74,12 +74,12 @@ class PdoEmulatedPlaceholders extends TestApplication
 		}
 
 		$this->addResult('Emulated', Timer::get());
-		self::cleanup();
+		$this->cleanup();
 	}
 
 	public function prepareTables()
 	{
-		$sql = 'CREATE DATABASE IF NOT EXISTS ' . self::$database;
+		$sql = 'CREATE DATABASE IF NOT EXISTS ' . $this->database;
 		Db::query($sql);
 		$sql = "CREATE TABLE IF NOT EXISTS test (
 			id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,

@@ -30,28 +30,28 @@ use Veles\Tools\Timer;
  */
 class MysqlVsMysqliVsPdoWrite extends TestApplication
 {
-	protected static $class_dependencies = ['PDO', 'MySQLi'];
-	protected static $ext_dependencies = ['pdo_mysql', 'mysqli', 'mysql'];
+	protected $class_dependencies = ['PDO', 'MySQLi'];
+	protected $ext_dependencies = ['pdo_mysql', 'mysqli', 'mysql'];
 
-	private static $user = 'root';
-	private static $host = 'localhost';
-	private static $password = '';
-	private static $database = 'php_bench_test';
+	private $user = 'root';
+	private $host = 'localhost';
+	private $password = '';
+	private $database = 'php_bench_test';
 
-    protected $repeats = 10000;
+    protected $repeats = 1000;
 	protected $result_format = "%-25s%-16s%-16s%-16s\n";
 
 	public function run()
 	{
-		self::prepareTables();
+		$this->prepareTables();
 		$repeats = $this->getRepeats();
 
 		$bar = new CliProgressBar($repeats);
 		$value = uniqid();
 		$sql = "INSERT INTO test (txt) VALUES ('$value')";
 
-		$link = @mysql_connect(self::$host, self::$user, self::$password);
-		@mysql_select_db(self::$database);
+		$link = @mysql_connect($this->host, $this->user, $this->password);
+		@mysql_select_db($this->database);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			@mysql_query($sql, $link);
@@ -65,7 +65,7 @@ class MysqlVsMysqliVsPdoWrite extends TestApplication
 		$bar = new CliProgressBar($repeats);
 
 		$mysqli = new mysqli(
-			self::$host, self::$user, self::$password, self::$database
+			$this->host, $this->user, $this->password, $this->database
 		);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
@@ -80,7 +80,7 @@ class MysqlVsMysqliVsPdoWrite extends TestApplication
 		$bar = new CliProgressBar($repeats);
 
 		$link = mysqli_connect(
-			self::$host, self::$user, self::$password, self::$database
+			$this->host, $this->user, $this->password, $this->database
 		);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
@@ -94,10 +94,10 @@ class MysqlVsMysqliVsPdoWrite extends TestApplication
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
 
-		$dsn = 'mysql:dbname=' . self::$database . ';'
-			. 'host=' . self::$host . ';'
+		$dsn = 'mysql:dbname=' . $this->database . ';'
+			. 'host=' . $this->host . ';'
 			. 'charset=utf8';
-		$pdo = new PDO($dsn, self::$user, self::$password);
+		$pdo = new PDO($dsn, $this->user, $this->password);
 		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
@@ -108,7 +108,7 @@ class MysqlVsMysqliVsPdoWrite extends TestApplication
 
 		$this->addResult('PDO', Timer::get());
 
-		self::cleanup();
+		$this->cleanup();
 	}
 
 	/**
@@ -119,21 +119,21 @@ class MysqlVsMysqliVsPdoWrite extends TestApplication
 	 */
 	public function prepareTables()
 	{
-		$mysqli = new mysqli(self::$host, self::$user, self::$password);
+		$mysqli = new mysqli($this->host, $this->user, $this->password);
 		if ($mysqli->connect_errno) {
 			throw new DbConnectException(
 				"Connect Error ($mysqli->connect_errno)\n$mysqli->connect_error"
 			);
 		}
 
-		$mysqli->query('CREATE DATABASE IF NOT EXISTS ' . self::$database);
+		$mysqli->query('CREATE DATABASE IF NOT EXISTS ' . $this->database);
 		if ($mysqli->errno) {
 			throw new DbQueryException(
 				"Query Error ($mysqli->errno)\n$mysqli->error"
 			);
 		}
 
-		$mysqli->select_db(self::$database);
+		$mysqli->select_db($this->database);
 		$mysqli->query("
 			CREATE TABLE IF NOT EXISTS test (
 				id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -171,14 +171,14 @@ class MysqlVsMysqliVsPdoWrite extends TestApplication
 	 */
 	public function cleanup()
 	{
-		$mysqli = new mysqli(self::$host, self::$user, self::$password);
+		$mysqli = new mysqli($this->host, $this->user, $this->password);
 		if ($mysqli->connect_errno) {
 			throw new DbConnectException(
 				"Connect Error ($mysqli->connect_errno)\n$mysqli->connect_error"
 			);
 		}
 
-		$mysqli->query('DROP DATABASE ' . self::$database);
+		$mysqli->query('DROP DATABASE ' . $this->database);
 		if ($mysqli->errno) {
 			throw new DbQueryException(
 				"Query Error ($mysqli->errno)\n$mysqli->error"
