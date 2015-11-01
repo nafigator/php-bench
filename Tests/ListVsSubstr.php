@@ -24,11 +24,11 @@ use Veles\Tools\Timer;
  */
 class ListVsSubstr extends TestApplication
 {
-	protected static $repeats = 1000;
+	protected $repeats = 1000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$text = 'Administration\Controller\UserController::Save';
 
 		$bar = new CliProgressBar($repeats);
@@ -39,7 +39,7 @@ class ListVsSubstr extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('list+explode', Timer::get());
+		$this->addResult('list+explode', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -51,6 +51,6 @@ class ListVsSubstr extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('substr+strpos', Timer::get());
+		$this->addResult('substr+strpos', Timer::get());
 	}
 }

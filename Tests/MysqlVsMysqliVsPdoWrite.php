@@ -38,13 +38,13 @@ class MysqlVsMysqliVsPdoWrite extends TestApplication
 	private static $password = '';
 	private static $database = 'php_bench_test';
 
-    protected static $repeats = 10000;
-	protected static $result_format = "%-25s%-16s%-16s%-16s\n";
+    protected $repeats = 10000;
+	protected $result_format = "%-25s%-16s%-16s%-16s\n";
 
-	final public static function run()
+	public function run()
 	{
 		self::prepareTables();
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$bar = new CliProgressBar($repeats);
 		$value = uniqid();
@@ -59,7 +59,7 @@ class MysqlVsMysqliVsPdoWrite extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('MySQL', Timer::get());
+		$this->addResult('MySQL', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -74,7 +74,7 @@ class MysqlVsMysqliVsPdoWrite extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('MySQLi', Timer::get());
+		$this->addResult('MySQLi', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -89,7 +89,7 @@ class MysqlVsMysqliVsPdoWrite extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('Non-object MySQLi', Timer::get());
+		$this->addResult('Non-object MySQLi', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -106,7 +106,7 @@ class MysqlVsMysqliVsPdoWrite extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('PDO', Timer::get());
+		$this->addResult('PDO', Timer::get());
 
 		self::cleanup();
 	}
@@ -117,7 +117,7 @@ class MysqlVsMysqliVsPdoWrite extends TestApplication
 	 * @throws \Application\DbQueryException
 	 * @throws \Application\DbConnectException
 	 */
-	final public static function prepareTables()
+	public function prepareTables()
 	{
 		$mysqli = new mysqli(self::$host, self::$user, self::$password);
 		if ($mysqli->connect_errno) {
@@ -169,7 +169,7 @@ class MysqlVsMysqliVsPdoWrite extends TestApplication
 	 * @throws \Application\DbQueryException
 	 * @throws \Application\DbConnectException
 	 */
-	final public static function cleanup()
+	public function cleanup()
 	{
 		$mysqli = new mysqli(self::$host, self::$user, self::$password);
 		if ($mysqli->connect_errno) {

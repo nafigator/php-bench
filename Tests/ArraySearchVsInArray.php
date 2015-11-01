@@ -25,9 +25,9 @@ use Veles\Tools\Timer;
  */
 class ArraySearchVsInArray extends TestApplication
 {
-    protected static $repeats = 10000;
+    protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
 		$haystack = [
 			'apple',
@@ -38,7 +38,7 @@ class ArraySearchVsInArray extends TestApplication
 		];
 		$needle = 'rutabaga';
 
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
@@ -48,7 +48,7 @@ class ArraySearchVsInArray extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('array_search', Timer::get());
+		$this->addResult('array_search', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -59,6 +59,6 @@ class ArraySearchVsInArray extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('in_array', Timer::get());
+		$this->addResult('in_array', Timer::get());
 	}
 }

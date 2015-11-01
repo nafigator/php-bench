@@ -28,13 +28,13 @@ use Veles\Tools\Timer;
  */
 class PdoEmulatedPlaceholders extends TestApplication
 {
-    protected static $repeats = 1000;
+    protected $repeats = 1000;
 	private static $database = 'php_bench_test';
 
-	final public static function run()
+	public function run()
 	{
 		self::prepareTables();
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$value1 = 'string one';
 		$value2 = 'string two';
 		$value3 = 'string three';
@@ -54,7 +54,7 @@ class PdoEmulatedPlaceholders extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('Real', Timer::get());
+		$this->addResult('Real', Timer::get());
 
 		PdoAdapter::instance()->getConnection()
 			->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
@@ -73,11 +73,11 @@ class PdoEmulatedPlaceholders extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('Emulated', Timer::get());
+		$this->addResult('Emulated', Timer::get());
 		self::cleanup();
 	}
 
-	final public static function prepareTables()
+	public function prepareTables()
 	{
 		$sql = 'CREATE DATABASE IF NOT EXISTS ' . self::$database;
 		Db::query($sql);
@@ -88,7 +88,7 @@ class PdoEmulatedPlaceholders extends TestApplication
 		Db::query($sql);
 	}
 
-	final public static function cleanup()
+	public function cleanup()
 	{
 		$sql = 'DROP TABLE test';
 		Db::query($sql);

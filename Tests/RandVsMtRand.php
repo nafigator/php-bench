@@ -24,11 +24,11 @@ use Veles\Tools\Timer;
  */
 class RandVsMtRand extends TestApplication
 {
-	protected static $repeats = 10000;
+	protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
@@ -38,7 +38,7 @@ class RandVsMtRand extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('rand', Timer::get());
+		$this->addResult('rand', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -50,6 +50,6 @@ class RandVsMtRand extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('mt_rand', Timer::get());
+		$this->addResult('mt_rand', Timer::get());
 	}
 }

@@ -25,12 +25,12 @@ use Veles\Tools\Timer;
 class SelfVsClass extends TestApplication
 {
 	const TEST = 'simple value';
-	protected static $repeats = 10000;
+	protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
 		$a = 0;
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
@@ -39,7 +39,7 @@ class SelfVsClass extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('self::TEST', Timer::get());
+		$this->addResult('self::TEST', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -52,6 +52,6 @@ class SelfVsClass extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('class::TEST', Timer::get());
+		$this->addResult('class::TEST', Timer::get());
 	}
 }

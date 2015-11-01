@@ -28,11 +28,11 @@ use Veles\Tools\Timer;
  */
 class RecursiveArrayIteratorPerformance extends TestApplication
 {
-    protected static $repeats = 10000;
+    protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$last_leave = '';
 		$array = create3DAssocArray(3, 10);
@@ -56,7 +56,7 @@ class RecursiveArrayIteratorPerformance extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('Iterator', Timer::get());
+		$this->addResult('Iterator', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -67,7 +67,7 @@ class RecursiveArrayIteratorPerformance extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('Custom func', Timer::get());
+		$this->addResult('Custom func', Timer::get());
 	}
 }
 

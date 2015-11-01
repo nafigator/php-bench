@@ -25,11 +25,11 @@ use Veles\Tools\Timer;
  */
 class IsAVsInstanceOf extends TestApplication
 {
-    protected static $repeats = 10000;
+    protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$object = new TestClass;
 
 		$bar = new CliProgressBar($repeats);
@@ -40,7 +40,7 @@ class IsAVsInstanceOf extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('is_a()', Timer::get());
+		$this->addResult('is_a()', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -51,7 +51,7 @@ class IsAVsInstanceOf extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('instanceof', Timer::get());
+		$this->addResult('instanceof', Timer::get());
 	}
 }
 

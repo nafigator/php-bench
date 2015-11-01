@@ -24,11 +24,11 @@ use Veles\Tools\Timer;
  */
 class StrtrVsStrReplace extends TestApplication
 {
-	protected static $repeats = 1000;
+	protected $repeats = 1000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$namespace = 'Vendor\Package\Core';
 		$bar = new CliProgressBar($repeats);
@@ -39,7 +39,7 @@ class StrtrVsStrReplace extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('strtr', Timer::get());
+		$this->addResult('strtr', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -51,6 +51,6 @@ class StrtrVsStrReplace extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('str_replace', Timer::get());
+		$this->addResult('str_replace', Timer::get());
 	}
 }

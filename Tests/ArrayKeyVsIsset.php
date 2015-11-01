@@ -24,12 +24,12 @@ use Veles\Tools\Timer;
  */
 class ArrayKeyVsIsset extends TestApplication
 {
-	protected static $repeats = 10000;
-	protected static $result_format = "%-20s%-16s%-16s%-16s\n";
+	protected $repeats = 10000;
+	protected $result_format = "%-20s%-16s%-16s%-16s\n";
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$array = ['prop' => 'value'];
 
 		$bar = new CliProgressBar($repeats);
@@ -40,7 +40,7 @@ class ArrayKeyVsIsset extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('array_key_exists', Timer::get());
+		$this->addResult('array_key_exists', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -52,6 +52,6 @@ class ArrayKeyVsIsset extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('isset', Timer::get());
+		$this->addResult('isset', Timer::get());
 	}
 }

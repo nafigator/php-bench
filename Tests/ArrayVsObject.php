@@ -24,11 +24,11 @@ use Veles\Tools\Timer;
  */
 class ArrayVsObject extends TestApplication
 {
-	protected static $repeats = 1000;
+	protected $repeats = 1000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$element_count = 50;
 
 		$bar = new CliProgressBar($repeats);
@@ -45,7 +45,7 @@ class ArrayVsObject extends TestApplication
 		}
 
 		unset($object);
-		self::addResult('$object', Timer::get());
+		$this->addResult('$object', Timer::get());
 		$bar = new CliProgressBar($repeats);
 
 		Timer::reset();
@@ -61,6 +61,6 @@ class ArrayVsObject extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('$array', Timer::get());
+		$this->addResult('$array', Timer::get());
 	}
 }

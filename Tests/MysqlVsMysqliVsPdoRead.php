@@ -33,18 +33,18 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 	protected static $class_dependencies = ['PDO', 'MySQLi'];
 	protected static $ext_dependencies = ['pdo_mysql', 'mysqli', 'mysql'];
 
-	protected static $repeats = 1000;
-	protected static $result_format = "%-30s%-16s%-16s%-16s\n";
+	protected $repeats = 1000;
+	protected $result_format = "%-30s%-16s%-16s%-16s\n";
 
 	private static $user = 'root';
 	private static $host = 'localhost';
 	private static $password = '';
 	private static $database = 'php_bench_test';
 
-	final public static function run()
+	public function run()
 	{
 		self::prepareTables();
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$sql = 'SELECT txt FROM test';
 		$bar = new CliProgressBar($repeats);
@@ -61,7 +61,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		}
 
 		@mysql_free_result($res);
-		self::addResult('MySQL', Timer::get());
+		$this->addResult('MySQL', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -79,7 +79,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		}
 
 		$res->free();
-		self::addResult('MySQLi', Timer::get());
+		$this->addResult('MySQLi', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -97,7 +97,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		}
 
 		mysqli_close($link);
-		self::addResult('Non-object MySQLi', Timer::get());
+		$this->addResult('Non-object MySQLi', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -115,7 +115,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		}
 
 		mysqli_close($link);
-		self::addResult('Non-object unbuffered MySQLi', Timer::get());
+		$this->addResult('Non-object unbuffered MySQLi', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -133,7 +133,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('PDO', Timer::get());
+		$this->addResult('PDO', Timer::get());
 		$bar = new CliProgressBar($repeats);
 		$pdo = new PDO($dsn, self::$user, self::$password);
 		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -147,7 +147,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('PDO fetchAll()', Timer::get());
+		$this->addResult('PDO fetchAll()', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 		$pdo = new PDO($dsn, self::$user, self::$password);
@@ -164,7 +164,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 			$result = [];
 		}
 
-		self::addResult('PDO execute()', Timer::get());
+		$this->addResult('PDO execute()', Timer::get());
 		self::cleanup();
 	}
 
@@ -174,7 +174,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 	 * @throws \Application\DbQueryException
 	 * @throws \Application\DbConnectException
 	 */
-	final public static function prepareTables()
+	public function prepareTables()
 	{
 		$mysqli = new mysqli(self::$host, self::$user, self::$password);
 		if ($mysqli->connect_errno) {
@@ -225,7 +225,7 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 	 * @throws \Application\DbQueryException
 	 * @throws \Application\DbConnectException
 	 */
-	final public static function cleanup()
+	public function cleanup()
 	{
 		$mysqli = new mysqli(self::$host, self::$user, self::$password);
 		if ($mysqli->connect_errno) {

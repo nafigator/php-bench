@@ -38,11 +38,11 @@ class AutoLoaders extends TestApplication
 	protected static $fallbackAutoloaderFlag = false;
 	protected static $namespaces = array('\Veles' => '\Veles');
 
-    protected static $repeats = 10000;
+    protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$class = '\Veles\Config';
 
@@ -73,7 +73,7 @@ class AutoLoaders extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('Zend', Timer::get());
+		$this->addResult('Zend', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -87,7 +87,7 @@ class AutoLoaders extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('Veles', Timer::get());
+		$this->addResult('Veles', Timer::get());
 	}
 
 	public static function ZendisFallbackAutoloader()

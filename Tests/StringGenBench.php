@@ -24,11 +24,11 @@ use Veles\Tools\Timer;
  */
 class StringGenBench extends TestApplication
 {
-	protected static $repeats = 1000;
+	protected $repeats = 1000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
@@ -38,7 +38,7 @@ class StringGenBench extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('genStr', Timer::get());
+		$this->addResult('genStr', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -50,7 +50,7 @@ class StringGenBench extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('genStrOpt', Timer::get());
+		$this->addResult('genStrOpt', Timer::get());
 	}
 }
 

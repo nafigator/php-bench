@@ -28,11 +28,11 @@ use Application\TestApplication;
  */
 class JsonVsSerialize extends TestApplication
 {
-    protected static $repeats = 10000;
+    protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$array   = create3DAssocArray(3, 3);
 
 		$bar = new CliProgressBar($repeats);
@@ -43,7 +43,7 @@ class JsonVsSerialize extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('json_encode()', Timer::get());
+		$this->addResult('json_encode()', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -54,7 +54,7 @@ class JsonVsSerialize extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('serialize()', Timer::get());
+		$this->addResult('serialize()', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -65,7 +65,7 @@ class JsonVsSerialize extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('var_export()', Timer::get());
+		$this->addResult('var_export()', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -76,7 +76,7 @@ class JsonVsSerialize extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('print_r()', Timer::get());
+		$this->addResult('print_r()', Timer::get());
 	}
 }
 

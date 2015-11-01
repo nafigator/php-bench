@@ -24,11 +24,11 @@ use Veles\Tools\Timer;
  */
 class IfVsAnd extends TestApplication
 {
-	protected static $repeats = 10000;
+	protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$var = true;
 		$tmp = false;
@@ -43,7 +43,7 @@ class IfVsAnd extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('if', Timer::get());
+		$this->addResult('if', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -55,6 +55,6 @@ class IfVsAnd extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('and', Timer::get());
+		$this->addResult('and', Timer::get());
 	}
 }

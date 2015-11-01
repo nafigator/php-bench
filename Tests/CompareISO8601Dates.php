@@ -25,11 +25,11 @@ use Veles\Tools\Timer;
  */
 class CompareISO8601Dates extends TestApplication
 {
-    protected static $repeats = 10000;
+    protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$date1 = '2011-09-09';
 		$date2 = '2011-09-08';
 
@@ -41,7 +41,7 @@ class CompareISO8601Dates extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('strtotime', Timer::get());
+		$this->addResult('strtotime', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -52,7 +52,7 @@ class CompareISO8601Dates extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('strcmp', Timer::get());
+		$this->addResult('strcmp', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -63,7 +63,7 @@ class CompareISO8601Dates extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('DateTime', Timer::get());
+		$this->addResult('DateTime', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -74,6 +74,6 @@ class CompareISO8601Dates extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('string', Timer::get());
+		$this->addResult('string', Timer::get());
 	}
 }

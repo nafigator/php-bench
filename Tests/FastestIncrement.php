@@ -25,11 +25,11 @@ use Application\TestApplication;
  */
 class FastestIncrement extends TestApplication
 {
-    protected static $repeats = 10000;
+    protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$bar = new CliProgressBar($repeats);
 		$x = 0;
@@ -40,7 +40,7 @@ class FastestIncrement extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('$x = $x + 1', Timer::get());
+		$this->addResult('$x = $x + 1', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -52,7 +52,7 @@ class FastestIncrement extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('$x += 1', Timer::get());
+		$this->addResult('$x += 1', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -64,7 +64,7 @@ class FastestIncrement extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('$x++', Timer::get());
+		$this->addResult('$x++', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -76,6 +76,6 @@ class FastestIncrement extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('++$x', Timer::get());
+		$this->addResult('++$x', Timer::get());
 	}
 }

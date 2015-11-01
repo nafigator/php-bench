@@ -30,13 +30,13 @@ class MemcacheVsMemcachedRead extends TestApplication
 	protected static $class_dependencies = ['Memcache', 'Memcached'];
 	protected static $ext_dependencies = ['Memcache', 'Memcached'];
 
-	protected static $repeats = 10000;
+	protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
 		self::initCache();
 
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$bar = new CliProgressBar($repeats);
 		$key = md5('adfjkjkang');
 		$data = range(0, 10);
@@ -49,7 +49,7 @@ class MemcacheVsMemcachedRead extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('Memcache', Timer::get());
+		$this->addResult('Memcache', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -62,7 +62,7 @@ class MemcacheVsMemcachedRead extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('Memcached', Timer::get());
+		$this->addResult('Memcached', Timer::get());
 		Cache::clear();
 	}
 

@@ -24,11 +24,11 @@ use Veles\Tools\Timer;
  */
 class CloneVsNew extends TestApplication
 {
-	protected static $repeats = 1000;
+	protected $repeats = 1000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
@@ -41,7 +41,7 @@ class CloneVsNew extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('New', Timer::get());
+		$this->addResult('New', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -56,6 +56,6 @@ class CloneVsNew extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('Clone', Timer::get());
+		$this->addResult('Clone', Timer::get());
 	}
 }

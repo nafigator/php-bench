@@ -24,11 +24,11 @@ use Veles\Tools\Timer;
  */
 class ForVsRange extends TestApplication
 {
-	protected static $repeats = 10000;
+	protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$tmp = 100;
 		$bar = new CliProgressBar($repeats);
@@ -39,7 +39,7 @@ class ForVsRange extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('for', Timer::get());
+		$this->addResult('for', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -51,6 +51,6 @@ class ForVsRange extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('while & range', Timer::get());
+		$this->addResult('while & range', Timer::get());
 	}
 }

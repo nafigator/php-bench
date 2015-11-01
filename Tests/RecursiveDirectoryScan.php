@@ -25,11 +25,11 @@ use Veles\Tools\Timer;
  */
 class RecursiveDirectoryScan extends TestApplication
 {
-    protected static $repeats = 10000;
+    protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$dir = self::createDir();
 
@@ -41,7 +41,7 @@ class RecursiveDirectoryScan extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('readdir()', Timer::get());
+		$this->addResult('readdir()', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -52,7 +52,7 @@ class RecursiveDirectoryScan extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('dir()', Timer::get());
+		$this->addResult('dir()', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -63,7 +63,7 @@ class RecursiveDirectoryScan extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('scandir()', Timer::get());
+		$this->addResult('scandir()', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -74,7 +74,7 @@ class RecursiveDirectoryScan extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('diff scandir()', Timer::get());
+		$this->addResult('diff scandir()', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -85,7 +85,7 @@ class RecursiveDirectoryScan extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('iterator', Timer::get());
+		$this->addResult('iterator', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -96,7 +96,7 @@ class RecursiveDirectoryScan extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('glob()', Timer::get());
+		$this->addResult('glob()', Timer::get());
 
 		self::dirCleanup($dir);
 	}
@@ -113,7 +113,7 @@ class RecursiveDirectoryScan extends TestApplication
 	 * @throws \Exception
 	 * @return string Return root directory name
 	 */
-	final public static function createDir(
+	public function createDir(
 		$name = null, $max = 3, $files = 30, $dirs = 3, $dim = 0
 	) {
 		if ($max < $dim) return $name;
@@ -146,7 +146,7 @@ class RecursiveDirectoryScan extends TestApplication
 	 *
 	 * @param string $dir Directory name for cleanup
 	 */
-	final public static function dirCleanup($dir)
+	public function dirCleanup($dir)
 	{
 		foreach (scandir($dir) as $name) {
 			if ('..' === $name or '.' === $name) continue;

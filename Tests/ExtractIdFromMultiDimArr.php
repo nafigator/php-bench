@@ -24,16 +24,16 @@ use Veles\Tools\Timer;
  */
 class ExtractIdFromMultiDimArr extends TestApplication
 {
-	protected static $repeats = 1000;
+	protected $repeats = 1000;
 
-	final public static function run()
+	public function run()
 	{
 		$array = [
 			['ID' => '2'],
 			['ID' => '3']
 		];
 
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$bar = new CliProgressBar($repeats);
 		$result = [];
 		for ($i = 1; $i <= $repeats; ++$i) {
@@ -45,7 +45,7 @@ class ExtractIdFromMultiDimArr extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('array_map', Timer::get());
+		$this->addResult('array_map', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -60,7 +60,7 @@ class ExtractIdFromMultiDimArr extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('foreach', Timer::get());
+		$this->addResult('foreach', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -75,6 +75,6 @@ class ExtractIdFromMultiDimArr extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('array_push', Timer::get());
+		$this->addResult('array_push', Timer::get());
 	}
 }

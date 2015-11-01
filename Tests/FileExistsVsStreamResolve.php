@@ -25,11 +25,11 @@ use Veles\Tools\Timer;
  */
 class FileExistsVsStreamResolve extends TestApplication
 {
-    protected static $repeats = 10000;
+    protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$temp_file = tempnam(sys_get_temp_dir(), 'pb-prefix');
 
 		$bar = new CliProgressBar($repeats);
@@ -40,7 +40,7 @@ class FileExistsVsStreamResolve extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('file_exists', Timer::get());
+		$this->addResult('file_exists', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -51,7 +51,7 @@ class FileExistsVsStreamResolve extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('stream_resolve', Timer::get());
+		$this->addResult('stream_resolve', Timer::get());
 
 		unlink($temp_file);
 	}

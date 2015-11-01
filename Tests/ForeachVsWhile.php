@@ -24,11 +24,11 @@ use Veles\Tools\Timer;
  */
 class ForeachVsWhile extends TestApplication
 {
-	protected static $repeats = 1000;
+	protected $repeats = 1000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
@@ -38,7 +38,7 @@ class ForeachVsWhile extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('while', Timer::get());
+		$this->addResult('while', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -50,6 +50,6 @@ class ForeachVsWhile extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('for', Timer::get());
+		$this->addResult('for', Timer::get());
 	}
 }

@@ -25,11 +25,11 @@ use Veles\Tools\Timer;
  */
 class ForeachVsArrayDiff extends TestApplication
 {
-    protected static $repeats = 10000;
+    protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$max = 1000;
 		$min = 0;
 
@@ -50,7 +50,7 @@ class ForeachVsArrayDiff extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('foreach', Timer::get());
+		$this->addResult('foreach', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -61,6 +61,6 @@ class ForeachVsArrayDiff extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('array_diff_key', Timer::get());
+		$this->addResult('array_diff_key', Timer::get());
 	}
 }

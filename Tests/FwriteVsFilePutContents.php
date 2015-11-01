@@ -25,11 +25,11 @@ use Application\TestApplication;
  */
 class FwriteVsFilePutContents extends TestApplication
 {
-    protected static $repeats = 10000;
+    protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$filename1 = strtolower(uniqid('file')) . '.txt';
 		$filename2 = strtolower(uniqid('file')) . '.txt';
 		$string = genStrShuffle(100);
@@ -45,7 +45,7 @@ class FwriteVsFilePutContents extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('fwrite()', Timer::get());
+		$this->addResult('fwrite()', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -56,7 +56,7 @@ class FwriteVsFilePutContents extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('put_contents()', Timer::get());
+		$this->addResult('put_contents()', Timer::get());
 		unlink($filename1);
 		unlink($filename2);
 	}

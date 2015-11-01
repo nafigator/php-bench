@@ -25,11 +25,11 @@ use Application\TestApplication;
  */
 class ReturnArrayVsObject extends TestApplication
 {
-    protected static $repeats = 1000;
+    protected $repeats = 1000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$prop_name = 'property';
 		$prop_count = 30;
 
@@ -41,7 +41,7 @@ class ReturnArrayVsObject extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('return array', Timer::get());
+		$this->addResult('return array', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -53,7 +53,7 @@ class ReturnArrayVsObject extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('fill array', Timer::get());
+		$this->addResult('fill array', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -65,7 +65,7 @@ class ReturnArrayVsObject extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('fill object', Timer::get());
+		$this->addResult('fill object', Timer::get());
 	}
 
 	private static function fillObject($obj, $count, $prop_name)

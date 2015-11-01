@@ -24,11 +24,11 @@ use Veles\Tools\Timer;
  */
 class IncludeOnceVsRequireOnce extends TestApplication
 {
-	protected static $repeats = 10000;
+	protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
@@ -38,7 +38,7 @@ class IncludeOnceVsRequireOnce extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('include_once', Timer::get());
+		$this->addResult('include_once', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -49,6 +49,6 @@ class IncludeOnceVsRequireOnce extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('require_once', Timer::get());
+		$this->addResult('require_once', Timer::get());
 	}
 }

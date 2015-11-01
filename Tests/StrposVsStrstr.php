@@ -24,11 +24,11 @@ use Veles\Tools\Timer;
  */
 class StrposVsStrstr extends TestApplication
 {
-	protected static $repeats = 10000;
+	protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$string = 'This is test string';
 		$needle = 'is test';
@@ -41,7 +41,7 @@ class StrposVsStrstr extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('strpos', Timer::get());
+		$this->addResult('strpos', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -53,7 +53,7 @@ class StrposVsStrstr extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('strstr', Timer::get());
+		$this->addResult('strstr', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -65,6 +65,6 @@ class StrposVsStrstr extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('substr+strlen', Timer::get());
+		$this->addResult('substr+strlen', Timer::get());
 	}
 }

@@ -25,11 +25,11 @@ use Veles\Tools\Timer;
  */
 class RoundToNearestThousand extends TestApplication
 {
-    protected static $repeats = 10000;
+    protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$x = mt_rand(1, 999);
 
 		$bar = new CliProgressBar($repeats);
@@ -40,7 +40,7 @@ class RoundToNearestThousand extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('round', Timer::get());
+		$this->addResult('round', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -51,6 +51,6 @@ class RoundToNearestThousand extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('calculation', Timer::get());
+		$this->addResult('calculation', Timer::get());
 	}
 }

@@ -24,7 +24,7 @@ use Veles\Tools\Timer;
  */
 class ThisVsSelf extends TestApplication
 {
-	final public static function run()
+	public function run()
 	{
 		$repeats = 100000;
 		$bar = new CliProgressBar($repeats);
@@ -35,7 +35,7 @@ class ThisVsSelf extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('This', Timer::get());
+		$this->addResult('This', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -47,7 +47,7 @@ class ThisVsSelf extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('Self', Timer::get());
+		$this->addResult('Self', Timer::get());
 	}
 }
 

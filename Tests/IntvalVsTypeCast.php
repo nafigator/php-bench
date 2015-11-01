@@ -25,11 +25,11 @@ use Veles\Tools\Timer;
  */
 class IntvalVsTypeCast extends TestApplication
 {
-    protected static $repeats = 10000;
+    protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
@@ -39,7 +39,7 @@ class IntvalVsTypeCast extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('(int)', Timer::get());
+		$this->addResult('(int)', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -50,6 +50,6 @@ class IntvalVsTypeCast extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('intval()', Timer::get());
+		$this->addResult('intval()', Timer::get());
 	}
 }

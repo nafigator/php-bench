@@ -25,11 +25,11 @@ use Application\TestApplication;
  */
 class HashBench extends TestApplication
 {
-    protected static $repeats = 10000;
+    protected $repeats = 10000;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$string = uniqid();
 		$hashes = hash_algos();
 
@@ -42,7 +42,7 @@ class HashBench extends TestApplication
 				$bar->update($i);
 			}
 
-			self::addResult($hash_name, Timer::get());
+			$this->addResult($hash_name, Timer::get());
 
 			Timer::reset();
 		}

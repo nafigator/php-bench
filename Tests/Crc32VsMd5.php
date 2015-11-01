@@ -25,13 +25,13 @@ use Veles\Tools\Timer;
 class Crc32VsMd5 extends TestApplication
 {
 	const TEST = 'simple value';
-	protected static $repeats = 1000;
+	protected $repeats = 1000;
 
-	final public static function run()
+	public function run()
 	{
 		$string = 'some random data';
 
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
@@ -40,7 +40,7 @@ class Crc32VsMd5 extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('dechex(crc32())', Timer::get());
+		$this->addResult('dechex(crc32())', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 		Timer::reset();
@@ -51,7 +51,7 @@ class Crc32VsMd5 extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('hash(\'crc32b\')', Timer::get());
+		$this->addResult('hash(\'crc32b\')', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 		Timer::reset();
@@ -62,6 +62,6 @@ class Crc32VsMd5 extends TestApplication
 			$bar->update($i);
 		}
 
-		self::addResult('md5()', Timer::get());
+		$this->addResult('md5()', Timer::get());
 	}
 }

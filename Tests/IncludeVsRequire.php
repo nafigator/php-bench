@@ -25,11 +25,11 @@ use Veles\Tools\Timer;
  */
 class IncludeVsRequire extends TestApplication
 {
-	protected static $repeats = 1;
+	protected $repeats = 1;
 
-	final public static function run()
+	public function run()
 	{
-		$repeats = self::getRepeats();
+		$repeats = $this->getRepeats();
 
 		$bar = new CliProgressBar($repeats);
 		Timer::start();
@@ -37,7 +37,7 @@ class IncludeVsRequire extends TestApplication
 		Timer::stop();
 		$bar->update(1);
 
-		self::addResult('include', Timer::get());
+		$this->addResult('include', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
 
@@ -47,6 +47,6 @@ class IncludeVsRequire extends TestApplication
 		Timer::stop();
 		$bar->update(1);
 
-		self::addResult('require', Timer::get());
+		$this->addResult('require', Timer::get());
 	}
 }
