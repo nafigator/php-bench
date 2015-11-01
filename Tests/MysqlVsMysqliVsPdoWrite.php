@@ -146,7 +146,6 @@ class MysqlVsMysqliVsPdoWrite extends TestApplication
 			);
 		}
 
-
 		$arr = [];
 		$i = 0;
 		while (++$i <= 1000) {
