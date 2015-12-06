@@ -15,8 +15,7 @@ Console tools for benchmark PHP algorithms.
 
 	git clone https://github.com/nafigator/php-bench.git
 	cd php-bench
-	git submodule init
-	git submodule update
+	git submodule update --init
 
 ###Usage:
 
