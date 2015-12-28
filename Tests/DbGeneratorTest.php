@@ -133,7 +133,7 @@ class DbGeneratorTest extends TestApplication
 
 		$arr = [];
 		$i = 0;
-		while (++$i <= 10000) {
+		while (++$i <= 5000) {
 			$arr[] = uniqid('test-value::');
 		}
 
