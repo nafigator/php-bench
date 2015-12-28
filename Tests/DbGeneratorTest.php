@@ -1,6 +1,8 @@
 <?php
 /**
- * @todo <Test description here>
+ * Check performance of identical db-classes which reach data collection of 1000
+ * elements. One of them uses generators, other not.
+ *
  * @file      DbGeneratorTest.php
  *
  * PHP version 5.4+
@@ -131,7 +133,7 @@ class DbGeneratorTest extends TestApplication
 
 		$arr = [];
 		$i = 0;
-		while (++$i <= 1000) {
+		while (++$i <= 10000) {
 			$arr[] = uniqid('test-value::');
 		}
 
