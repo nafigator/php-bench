@@ -86,7 +86,7 @@ class DbGeneratorTest extends TestApplication
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
 			$result = Db::rows($sql);
-			foreach ($result as $value) {}
+			foreach ($result() as $value) {}
 			Timer::stop();
 			$bar->update($i);
 		}
