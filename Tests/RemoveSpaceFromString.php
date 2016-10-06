@@ -1,14 +1,14 @@
 <?php
 /**
- * Calculate performance drop from dynamic methods call
+ * Find fastest way to remove space from string
  *
- * @file      DynamicVsStaticClass.php
+ * @file      RemoveSpaceFromString.php
  *
  * PHP version 5.4+
  *
  * @author    Yancharuk Alexander <alex at itvault dot info>
  * @copyright © 2013-2016 Yancharuk Alexander
- * @date      Tue Nov 10 13:17:44 2015
+ * @date      Thu Oct 06 12:25:56 2016
  * @license   The BSD 3-Clause License.
  *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
  */
@@ -20,60 +20,38 @@ use Veles\Tools\Timer;
 use Application\TestApplication;
 
 /**
- * Class DynamicVsStaticClass
+ * Class RemoveSpaceFromString
  *
  * @author Yancharuk Alexander <alex at itvault dot info>
  */
-class DynamicVsStaticClass extends TestApplication
+class RemoveSpaceFromString extends TestApplication
 {
     protected $repeats = 10000;
-	protected $result_format = "%-25s%-16s%-16s%-16s\n";
 
 	public function run()
 	{
 		$repeats = $this->getRepeats();
+		$string  = 'this is string with spaces';
 
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
-			$class = new DynamicClass;
-			$class->testMethod();
+			$result = str_replace(' ', '', $string);
 			Timer::stop();
 			$bar->update($i);
 		}
 
-		$this->addResult('Dynamic calls', Timer::get());
+		$this->addResult('str_replace', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
-			(new DynamicClass)->testMethod();
+			$result = preg_replace('/\s+/', '', $string);
 			Timer::stop();
 			$bar->update($i);
 		}
 
-		$this->addResult('Simple dynamic syntax', Timer::get());
-
-		Timer::reset();
-		$bar = new CliProgressBar($repeats);
-		for ($i = 1; $i <= $repeats; ++$i) {
-			Timer::start();
-			StaticClass::testMethod();
-			Timer::stop();
-			$bar->update($i);
-		}
-
-		$this->addResult('Static calls', Timer::get());
+		$this->addResult('preg_replace', Timer::get());
 	}
-}
-
-class DynamicClass
-{
-	public function testMethod() {}
-}
-
-class StaticClass
-{
-	public static function testMethod() {}
 }
