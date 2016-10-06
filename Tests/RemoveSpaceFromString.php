@@ -33,6 +33,8 @@ class RemoveSpaceFromString extends TestApplication
 		$repeats = $this->getRepeats();
 		$string  = 'this is string with spaces';
 
+		Timer::reset();
+		$result = '';
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
@@ -44,6 +46,7 @@ class RemoveSpaceFromString extends TestApplication
 		$this->addResult('str_replace', Timer::get());
 
 		Timer::reset();
+		$result = '';
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
@@ -53,5 +56,41 @@ class RemoveSpaceFromString extends TestApplication
 		}
 
 		$this->addResult('preg_replace', Timer::get());
+
+		Timer::reset();
+		$result = '';
+		$bar = new CliProgressBar($repeats);
+		for ($i = 1; $i <= $repeats; ++$i) {
+			Timer::start();
+			$result = strtok($string, ' ');
+			while (false !== ($substr = strtok(' ')))
+				$result .= $substr;
+			Timer::stop();
+			$bar->update($i);
+		}
+
+		$this->addResult('strtok', Timer::get());
+
+		Timer::reset();
+		$result = '';
+		$bar = new CliProgressBar($repeats);
+		for ($i = 1; $i <= $repeats; ++$i) {
+			Timer::start();
+			$j = 0;
+			$length = strlen($string);
+			while ($j < $length) {
+				if (' ' === $string[$j]) {
+					++$j; continue;
+				}
+
+				$result .= $string[$j];
+				++$j;
+			}
+
+			Timer::stop();
+			$bar->update($i);
+		}
+
+		$this->addResult('str as array', Timer::get());
 	}
 }
