@@ -1,6 +1,7 @@
 <?php
 /**
- * @todo <Test description here>
+ * Check which way for receiving class name is faster
+ *
  * @file      GetClassName.php
  *
  * PHP version 5.4+
