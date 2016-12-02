@@ -39,7 +39,10 @@ class GeoDistance extends TestApplication
 
 		//var_dump(vincentyGreatCircleDistance($latitude_from, $longitude_from, $latitude_to, $longitude_to));
 		//var_dump(codexworldGetDistance($latitude_from, $longitude_from, $latitude_to, $longitude_to));
+		//var_dump(codexworldGetDistanceOpt($latitude_from, $longitude_from, $latitude_to, $longitude_to));
 		//var_dump(distanceUserChecker($latitude_from, $longitude_from, $latitude_to, $longitude_to));
+		//var_dump(distanceUserChecker1($latitude_from, $longitude_from, $latitude_to, $longitude_to));
+		//var_dump(distanceUserChecker2($latitude_from, $longitude_from, $latitude_to, $longitude_to));
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
@@ -67,6 +70,17 @@ class GeoDistance extends TestApplication
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
+			codexworldGetDistanceOpt($latitude_from, $longitude_from, $latitude_to, $longitude_to);
+			Timer::stop();
+			$bar->update($i);
+		}
+
+		$this->addResult('codexworld-opt', Timer::get());
+
+		Timer::reset();
+		$bar = new CliProgressBar($repeats);
+		for ($i = 1; $i <= $repeats; ++$i) {
+			Timer::start();
 			distanceUserChecker($latitude_from, $longitude_from, $latitude_to, $longitude_to);
 			Timer::stop();
 			$bar->update($i);
@@ -84,6 +98,17 @@ class GeoDistance extends TestApplication
 		}
 
 		$this->addResult('custom1', Timer::get());
+
+		Timer::reset();
+		$bar = new CliProgressBar($repeats);
+		for ($i = 1; $i <= $repeats; ++$i) {
+			Timer::start();
+			distanceUserChecker2($latitude_from, $longitude_from, $latitude_to, $longitude_to);
+			Timer::stop();
+			$bar->update($i);
+		}
+
+		$this->addResult('custom2', Timer::get());
 	}
 }
 
@@ -138,6 +163,26 @@ function codexworldGetDistance($latitudeFrom, $longitudeFrom, $latitudeTo, $long
 }
 
 /**
+ * Optimized algorithm from http://www.codexworld.com/distance-between-two-addresses-google-maps-api-php/
+ *
+ * @param $latitudeFrom
+ * @param $longitudeFrom
+ * @param $latitudeTo
+ * @param $longitudeTo
+ *
+ * @return float [km]
+ */
+function codexworldGetDistanceOpt($latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo)
+{
+	$rad = M_PI / 180;
+    //Calculate distance from latitude and longitude
+    $theta = $longitudeFrom - $longitudeTo;
+    $dist = sin($latitudeFrom * $rad) * sin($latitudeTo * $rad) +  cos($latitudeFrom * $rad) * cos($latitudeTo * $rad) * cos($theta * $rad);
+
+    return acos($dist) / $rad * 60 *  1.852;
+}
+
+/**
  * Returns distance in km
  *
  * @param $lat1
@@ -179,7 +224,34 @@ function distanceUserChecker1($lat1, $lng1, $lat2, $lng2)
 	$r = 6372.797; // mean radius of Earth in km
 	$dlat = deg2rad($lat2) - deg2rad($lat1);
 	$dlng = deg2rad($lng2) - deg2rad($lng1);
-	$a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlng / 2) * sin($dlng / 2);
+	$a = sin($dlat / 2) * sin($dlat / 2) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * sin($dlng / 2) * sin($dlng / 2);
+	$c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+
+	return $r * $c;
+}
+
+/**
+ * Returns distance in km
+ *
+ * @param $lat1
+ * @param $lng1
+ * @param $lat2
+ * @param $lng2
+ *
+ * @return float
+ */
+function distanceUserChecker2($lat1, $lng1, $lat2, $lng2)
+{
+	$pi80 = M_PI / 180;
+	$lat1 *= $pi80;
+	$lng1 *= $pi80;
+	$lat2 *= $pi80;
+	$lng2 *= $pi80;
+
+	$r = 6372.797; // mean radius of Earth in km
+	$dlat = ($lat2 - $lat1) / 2;
+	$dlng = ($lng2 - $lng1) / 2;
+	$a = sin($dlat) * sin($dlat) + cos($lat1) * cos($lat2) * sin($dlng) * sin($dlng);
 	$c = 2 * atan2(sqrt($a), sqrt(1 - $a));
 
 	return $r * $c;
