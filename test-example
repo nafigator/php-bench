@@ -33,7 +33,11 @@ setlocale(LC_ALL, 'ru_RU.utf8');
 date_default_timezone_set('Europe/Moscow');
 /** @noinspection PhpIncludeInspection */
 require 'lib/Veles/AutoLoader.php';
-AutoLoader::registerPath(BASE_PATH . '/lib');
+
+set_include_path(
+	implode(PATH_SEPARATOR, [BASE_PATH . '/lib', get_include_path()])
+);
+
 AutoLoader::init();
 
 // Db class initialization
@@ -45,8 +49,8 @@ $conn->setDsn('mysql:host=localhost;dbname=dbname;charset=utf8')
 	->setPassword('password')
 	->setOptions([
 		PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-		PDO::ATTR_EMULATE_PREPARES => false
+		PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+		PDO::ATTR_EMULATE_PREPARES   => false
 	]);
 $pool->addConnection($conn, true);
 PdoAdapter::setPool($pool);
