@@ -53,11 +53,10 @@ $conn->setDsn('mysql:host=localhost;dbname=dbname;charset=utf8')
 		PDO::ATTR_EMULATE_PREPARES   => false
 	]);
 $pool->addConnection($conn, true);
-PdoAdapter::setPool($pool);
-Db::setAdapter(PdoAdapter::instance());
+Db::setAdapter((new PdoAdapter)->setPool($pool));
 
 if ($argc < 2) {
-	throw new Exception('Enter classname as parameter!');
+	throw new Exception('Enter class name as parameter!');
 }
 
 $app_class = "Tests\\$argv[1]";
