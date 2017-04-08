@@ -9,7 +9,7 @@
  *
  * PHP version 5.4+
  *
- * @author    Alexander Yancharuk <alex@itvault.info>
+ * @author    Alexander Yancharuk <alex at itvault dot info>
  * @date      Tue May 19 05:59:24 2015
  * @license   The BSD 3-Clause License
  *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
@@ -24,7 +24,7 @@ use Application\TestApplication;
 /**
  * Class Autoloaders
  *
- * @author Alexander Yancharuk <alex@itvault.info>
+ * @author Alexander Yancharuk <alex at itvault dot info>
  */
 class AutoLoaders extends TestApplication
 {

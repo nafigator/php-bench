@@ -6,7 +6,7 @@
  *
  * PHP version 5.4+
  *
- * @author    Yancharuk Alexander <alex@itvault.info>
+ * @author    Yancharuk Alexander <alex at itvault dot info>
  * @date      Wed Aug 19 18:22:36 2015
  * @license   The BSD 3-Clause License
  *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
@@ -21,7 +21,7 @@ use Application\TestApplication;
 /**
  * Class FwriteVsFilePutContents
  *
- * @author Yancharuk Alexander <alex@itvault.info>
+ * @author Yancharuk Alexander <alex at itvault dot info>
  */
 class FwriteVsFilePutContents extends TestApplication
 {

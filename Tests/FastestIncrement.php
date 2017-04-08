@@ -6,7 +6,7 @@
  *
  * PHP version 5.4+
  *
- * @author    Yancharuk Alexander <alex@itvault.info>
+ * @author    Yancharuk Alexander <alex at itvault dot info>
  * @date      Fri Aug 14 18:02:18 2015
  * @license   The BSD 3-Clause License
  *            <https://tldrlegal.com/license/bsd-3-clause-license-(revised)>
@@ -21,7 +21,7 @@ use Application\TestApplication;
 /**
  * Class FastestIncrement
  *
- * @author Yancharuk Alexander <alex@itvault.info>
+ * @author Yancharuk Alexander <alex at itvault dot info>
  */
 class FastestIncrement extends TestApplication
 {
