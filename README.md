@@ -7,17 +7,17 @@ Console tools for benchmark PHP algorithms.
 
 ![Alt php-bench](https://github.com/nafigator/php-bench/raw/master/screen.png)
 
-###Requirements:
+### Requirements:
 
 * PHP CLI 5.4+
 
-###Installation:
+### Installation:
 
 	git clone https://github.com/nafigator/php-bench.git
 	cd php-bench
 	git submodule update --init
 
-###Usage:
+### Usage:
 
 Create copy of test executable and modify your local settings:
 
@@ -38,12 +38,12 @@ Run test:
 
 **Class** - class name from Tests directory.
 
-###Examples:
+### Examples:
 
 	./test CloneVsNew
 	./test IncludeVsRequire
 
-###Run all tests:
+### Run all tests:
 
 	for name in $(find Tests -type f -name '*.php' | sed 's/^Tests\/\(.*\)\.php/\1/'); do echo;echo $name;echo; ./test $name; done;
 ***
