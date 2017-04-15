@@ -40,12 +40,20 @@ Run test:
 
 ### Examples:
 
+```bash
 	./test CloneVsNew
 	./test IncludeVsRequire
+```
+
 
 ### Run all tests:
 
-	for name in $(find Tests -type f -name '*.php' | sed 's/^Tests\/\(.*\)\.php/\1/'); do echo;echo $name;echo; ./test $name; done;
+```bash
+	for name in $(find Tests -type f -name '*.php' | sed 's/^Tests\/\(.*\)\.php/\1/');
+		do echo;echo $name;echo; ./test $name;
+	done;
+```
+
 ***
 If you'd like to see other PHP-algorithm comparison in this collection, feel
 free to create a new issue. Thanks!
