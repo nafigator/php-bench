@@ -13,45 +13,58 @@ Console tools for benchmark PHP algorithms.
 
 ### Installation:
 
-	git clone https://github.com/nafigator/php-bench.git
-	cd php-bench
-	git submodule update --init
+```bash
+git clone https://github.com/nafigator/php-bench.git
+cd php-bench
+git submodule update --init
+```
 
 ### Usage:
 
 Create copy of test executable and modify your local settings:
 
-    cp test-example test
+```text
+cp test-example test
+```
+
 
 Show available tests:
 
-	./test-list
+```text
+./test-list
+```
+
 Create test skeleton:
 
-    ./test-new <Test name> [<Block count>]
+```text
+./test-new <Test name> [<Block count>]
+```
 **Test name** - name of new test class.<br>
 **Block count** - how much test blocks generate
 
 Run test:
 
-	./test <Class>
+```text
+./test <Class>
+```
+
 
 **Class** - class name from Tests directory.
 
 ### Examples:
 
-```bash
-	./test CloneVsNew
-	./test IncludeVsRequire
+```text
+./test CloneVsNew
+./test IncludeVsRequire
 ```
 
 
 ### Run all tests:
 
 ```bash
-	for name in $(find Tests -type f -name '*.php' | sed 's/^Tests\/\(.*\)\.php/\1/');
-		do echo;echo $name;echo; ./test $name;
-	done;
+for name in $(find Tests -type f -name '*.php' | sed 's/^Tests\/\(.*\)\.php/\1/');
+	do echo;echo $name;echo; ./test $name;
+done;
 ```
 
 ***
