@@ -31,7 +31,7 @@ use Veles\Tools\Timer;
 class MysqlVsMysqliVsPdoWrite extends TestApplication
 {
 	protected $class_dependencies = ['PDO', 'MySQLi'];
-	protected $ext_dependencies = ['pdo_mysql', 'mysqli', 'mysql'];
+	protected $ext_dependencies = ['pdo_mysql', 'mysqli'];
 
 	private $user = 'root';
 	private $host = 'localhost';
@@ -49,20 +49,6 @@ class MysqlVsMysqliVsPdoWrite extends TestApplication
 		$bar = new CliProgressBar($repeats);
 		$value = uniqid();
 		$sql = "INSERT INTO test (txt) VALUES ('$value')";
-
-		$link = @mysql_connect($this->host, $this->user, $this->password);
-		@mysql_select_db($this->database);
-		for ($i = 1; $i <= $repeats; ++$i) {
-			Timer::start();
-			@mysql_query($sql, $link);
-			Timer::stop();
-			$bar->update($i);
-		}
-
-		$this->addResult('MySQL', Timer::get());
-
-		Timer::reset();
-		$bar = new CliProgressBar($repeats);
 
 		$mysqli = new mysqli(
 			$this->host, $this->user, $this->password, $this->database

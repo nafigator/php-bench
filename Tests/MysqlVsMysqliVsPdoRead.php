@@ -31,7 +31,7 @@ use Veles\Tools\Timer;
 class MysqlVsMysqliVsPdoRead extends TestApplication
 {
 	protected $class_dependencies = ['PDO', 'MySQLi'];
-	protected $ext_dependencies = ['pdo_mysql', 'mysqli', 'mysql'];
+	protected $ext_dependencies = ['pdo_mysql', 'mysqli'];
 
 	protected $repeats = 1000;
 	protected $result_format = "%-30s%-16s%-16s%-16s\n";
@@ -49,23 +49,6 @@ class MysqlVsMysqliVsPdoRead extends TestApplication
 		$sql = 'SELECT txt FROM test';
 		$bar = new CliProgressBar($repeats);
 
-		$link = @mysql_connect(self::$host, self::$user, self::$password);
-		@mysql_select_db(self::$database);
-		for ($i = 1; $i <= $repeats; ++$i) {
-			$result = [];
-			Timer::start();
-			$res = @mysql_query($sql, $link);
-			while ($row = @mysql_fetch_assoc($res)) $result[] = $row;
-			Timer::stop();
-			$bar->update($i);
-		}
-
-		@mysql_free_result($res);
-		$this->addResult('MySQL', Timer::get());
-
-		$bar = new CliProgressBar($repeats);
-
-		Timer::reset();
 		$mysqli = new mysqli(
 			self::$host, self::$user, self::$password, self::$database
 		);
