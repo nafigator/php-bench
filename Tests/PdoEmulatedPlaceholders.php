@@ -65,7 +65,7 @@ class PdoEmulatedPlaceholders extends TestApplication
 
 		$this->addResult('Real', Timer::get());
 
-		PdoAdapter::instance()->getConnection()
+		Db::getAdapter()->getResource()
 			->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
