@@ -34,7 +34,7 @@ class IntvalVsTypeCast extends TestApplication
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
-			$a = (int) 5.55;
+			(int) 5.55;
 			Timer::stop();
 			$bar->update($i);
 		}
@@ -45,7 +45,7 @@ class IntvalVsTypeCast extends TestApplication
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
-			$a = intval(5.55);
+			intval(5.55);
 			Timer::stop();
 			$bar->update($i);
 		}
