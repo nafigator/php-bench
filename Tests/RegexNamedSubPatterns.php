@@ -2,7 +2,7 @@
 /**
  * Find out performance impact of named regex subpatterns
  *
- * @file      RegexNamedSubpatterns.php
+ * @file      RegexNamedSubPatterns.php
  *
  * PHP version 5.4+
  *
@@ -20,11 +20,11 @@ use Veles\Tools\Timer;
 use Application\TestApplication;
 
 /**
- * Class RegexNamedSubpatterns
+ * Class RegexNamedSubPatterns
  *
  * @author Yancharuk Alexander <alex at itvault dot info>
  */
-class RegexNamedSubpatterns extends TestApplication
+class RegexNamedSubPatterns extends TestApplication
 {
     protected $repeats = 10000;
 	protected $result_format = "%-30s%-16s%-16s%-16s\n";

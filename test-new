@@ -23,7 +23,7 @@ $content .= <<<EOT
  * @todo <Test description here>
  * @file      $file_name
  *
- * PHP version 5.4+
+ * PHP version 5.6+
  *
  * @author    $user_name <$user_mail>
  * @copyright © 2013-$curr_year $user_name
