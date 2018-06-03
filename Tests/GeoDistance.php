@@ -179,7 +179,7 @@ function codexworldGetDistanceOpt($latitudeFrom, $longitudeFrom, $latitudeTo, $l
     $theta = $longitudeFrom - $longitudeTo;
     $dist = sin($latitudeFrom * $rad) * sin($latitudeTo * $rad) +  cos($latitudeFrom * $rad) * cos($latitudeTo * $rad) * cos($theta * $rad);
 
-    return acos($dist) / $rad * 60 *  1.852;
+    return acos($dist) / $rad * 60 *  1.853159616;
 }
 
 /**
