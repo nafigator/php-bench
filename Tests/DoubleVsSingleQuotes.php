@@ -1,6 +1,7 @@
 <?php
 /**
- * @todo <Test description here>
+ * Test performance impact of double and single quotes
+ *
  * @file      DoubleVsSingleQuotes.php
  *
  * PHP version 5.6+
