@@ -1,6 +1,6 @@
 <?php
 /**
- * Check what is faster rand() or mt_rand()
+ * Check what is faster rand() or mt_rand() or random_int()
  *
  * @file      RandVsMtRand.php
  *
@@ -41,7 +41,6 @@ class RandVsMtRand extends TestApplication
 		$this->addResult('rand', Timer::get());
 
 		$bar = new CliProgressBar($repeats);
-
 		Timer::reset();
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
@@ -51,5 +50,16 @@ class RandVsMtRand extends TestApplication
 		}
 
 		$this->addResult('mt_rand', Timer::get());
+
+        $bar = new CliProgressBar($repeats);
+        Timer::reset();
+        for ($i = 1; $i <= $repeats; ++$i) {
+            Timer::start();
+            random_int(PHP_INT_MIN, PHP_INT_MAX);
+            Timer::stop();
+            $bar->update($i);
+        }
+
+        $this->addResult('random_int', Timer::get());
 	}
 }
