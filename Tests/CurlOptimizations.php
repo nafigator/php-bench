@@ -1,6 +1,9 @@
 <?php
 /**
- * @todo <Test description here>
+ * Is there performance boost from CURLOPT_ENCODING and CURLOPT_IPRESOLVE curl options
+ *
+ * @see https://stackoverflow.com/questions/19467449/how-to-speed-up-curl-in-php/19468010
+ *
  * @file      CurlOptimizations.php
  *
  * PHP version 5.6+
