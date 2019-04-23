@@ -76,14 +76,14 @@ class TestApplication extends Application
 		foreach ($this->class_dependencies as $class_name) {
 			if (class_exists($class_name)) continue;
 			$errors .= sprintf(
-				"%-12s%-20s%-10s\n", 'Class', $class_name, 'not found!'
+				"%-12s%-20s%-10s\n", 'Class ', $class_name, ' not found!'
 			);
 		}
 
 		foreach ($this->ext_dependencies as $ext_name) {
 			if (extension_loaded($ext_name)) continue;
 			$errors .= sprintf(
-				"%-12s%-20s%-10s\n", 'Extension', $ext_name, 'not loaded!'
+				"%-12s%-20s%-10s\n", 'Extension ', $ext_name, ' not loaded!'
 			);
 		}
 
