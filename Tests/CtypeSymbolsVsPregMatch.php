@@ -25,18 +25,18 @@ use Application\TestApplication;
  */
 class CtypeSymbolsVsPregMatch extends TestApplication
 {
-    protected $repeats = 10000;
+	protected $repeats = 10000;
 
 	public function run()
 	{
 		$repeats = $this->getRepeats();
-        $string = 'sdfsdfULKJlkj';
+		$string = 'sdfsdfULKJlkj';
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
-            ctype_upper($string) && ctype_lower($string);
+			ctype_alpha($string);
 			Timer::stop();
 			$bar->update($i);
 		}
@@ -47,7 +47,7 @@ class CtypeSymbolsVsPregMatch extends TestApplication
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
-            preg_match('/^[A-Za-z]+$/', $string);
+			preg_match('/^[A-Za-z]+$/', $string);
 			Timer::stop();
 			$bar->update($i);
 		}
