@@ -1,6 +1,7 @@
 <?php
 /**
- * @todo <Test description here>
+ * Check performance of ctype_digit function
+ *
  * @file      CtypeVsRegex.php
  *
  * PHP version 5.6+
@@ -25,7 +26,7 @@ use Application\TestApplication;
  */
 class CtypeDigitVsRegex extends TestApplication
 {
-    protected $repeats = 10000;
+	protected $repeats = 10000;
 
 	public function run()
 	{
@@ -53,5 +54,16 @@ class CtypeDigitVsRegex extends TestApplication
 		}
 
 		$this->addResult('preg_match', Timer::get());
+
+		Timer::reset();
+		$bar = new CliProgressBar($repeats);
+		for ($i = 1; $i <= $repeats; ++$i) {
+			Timer::start();
+			filter_var($string, FILTER_VALIDATE_INT);
+			Timer::stop();
+			$bar->update($i);
+		}
+
+		$this->addResult('filter_var', Timer::get());
 	}
 }
