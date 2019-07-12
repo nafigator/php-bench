@@ -1,6 +1,6 @@
 <?php
 /**
- * Find out way to generate range of unique numbers
+ * Find out a way to generate range of unique numbers
  *
  * @file      UniqueNumbers.php
  *
