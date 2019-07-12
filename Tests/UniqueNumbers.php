@@ -33,7 +33,7 @@ class UniqueNumbers extends TestApplication
 		$repeats = $this->getRepeats();
 		$minValue = 20000;
 		$maxValue = 2000000;
-		$count = 100000;
+		$count = 1000000;
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
