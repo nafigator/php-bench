@@ -39,45 +39,45 @@ class UniqueNumbers extends TestApplication
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
-			generateShuffle($minValue, $maxValue, $count);
+			generateWithShuffle($minValue, $maxValue, $count);
 			Timer::stop();
 			$bar->update($i);
 		}
 
-		$this->addResult('generateShuffle', Timer::get());
+		$this->addResult('shuffle()', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
-			generateKeys($minValue, $maxValue, $count);
+			generateWithKeys($minValue, $maxValue, $count);
 			Timer::stop();
 			$bar->update($i);
 		}
 
-		$this->addResult('generateKeys', Timer::get());
+		$this->addResult('keys', Timer::get());
 
 		Timer::reset();
 		$bar = new CliProgressBar($repeats);
 		for ($i = 1; $i <= $repeats; ++$i) {
 			Timer::start();
-			generateValues($minValue, $maxValue, $count);
+			generateWithValues($minValue, $maxValue, $count);
 			Timer::stop();
 			$bar->update($i);
 		}
 
-		$this->addResult('generateValues', Timer::get());
+		$this->addResult('values', Timer::get());
 	}
 }
 
-function generateShuffle($minValue, $maxValue, $count) {
+function generateWithShuffle($minValue, $maxValue, $count) {
 	$numbers = range($minValue, $maxValue);
 	shuffle($numbers);
 
 	return array_slice($numbers, 0, $count);
 }
 
-function generateKeys($minValue, $maxValue, $count) {
+function generateWithKeys($minValue, $maxValue, $count) {
 	$result = [];
 
 	while(count($result) < $count) {
@@ -87,7 +87,7 @@ function generateKeys($minValue, $maxValue, $count) {
 	return array_keys($result);
 }
 
-function generateValues($minValue, $maxValue, $count) {
+function generateWithValues($minValue, $maxValue, $count) {
 	$result = [];
 	$i = 0;
 
