@@ -30,7 +30,7 @@ use Veles\Tools\Timer;
  */
 class Fpm extends TestApplication
 {
-    protected $repeats = 100;
+    protected $repeats = 1000;
     protected const FPM_QUERY = 'http://gateways.local/gateways/sovkom/send?fname=Тест&mname=Тест&lname=Тест&sum=15000&region=Ставропольский Край&city=Пятигорск&work_st=работает&bdate=1993-01-28&chan=testChan&apiKey=1q2w3e4r5t6y7u8i9o0p&wmid=1488&phone=9876543210&email=big_5336@rambler.ru&data1=data1&data2=data2&data3=data3&data4=data4&data5=data5&personal_data_agree=1&personal_data_datetime=2019-07-24 18:12:23&personal_data_url=https://example.com/anketa&advert_agree=1&user_agent=Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0&ip=127.0.0.1';
     protected const CLI_QUERY = 'http://gateways.local/gateways/mig/send?fname=Тест&mname=Тест&lname=Тест&sum=15000&region=Ставропольский Край&city=Пятигорск&work_st=работает&bdate=1993-01-28&chan=testChan&apiKey=1q2w3e4r5t6y7u8i9o0p&wmid=1488&phone=9876543210&email=big_5336@rambler.ru&data1=data1&data2=data2&data3=data3&data4=data4&data5=data5&personal_data_agree=1&personal_data_datetime=2019-07-24 18:12:23&personal_data_url=https://example.com/anketa&advert_agree=1&user_agent=Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0&ip=127.0.0.1';
     protected const FPM_QUERY_DATA = [
@@ -94,7 +94,7 @@ class Fpm extends TestApplication
 			$bar->update($i);
 		}
 
-		$this->addResult('FPM Socket', Timer::get());
+		$this->addResult('cgi-fcgi', Timer::get());
 
         Timer::reset();
 
