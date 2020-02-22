@@ -2,8 +2,7 @@
 
 php-bench
 =========
-
-Console tools for benchmark PHP algorithms.
+**Console tools for benchmark PHP algorithms.**
 
 ![Alt php-bench](https://github.com/nafigator/php-bench/raw/master/screen.png)
 
