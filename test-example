@@ -61,9 +61,6 @@ if ($argc < 2) {
 
 $app_class = "Tests\\$argv[1]";
 $application = new $app_class;
-/** @noinspection PhpUndefinedMethodInspection */
 $application->testDependencies();
-/** @noinspection PhpUndefinedMethodInspection */
 $application->run();
-/** @noinspection PhpUndefinedMethodInspection */
 $application->showResults();
