@@ -1,4 +1,4 @@
-[![GitHub license][License img]][License src]
+[![GitHub license][License img]][License src] [![Conventional Commits][Conventional commits badge]][Conventional commits src]
 
 php-bench
 =========
@@ -70,5 +70,7 @@ done;
 If you'd like to see other PHP-algorithm comparison in this collection, feel
 free to create a new issue. Thanks!
 
-  [License img]: https://img.shields.io/badge/license-BSD3-brightgreen.svg
-  [License src]: https://tldrlegal.com/license/bsd-3-clause-license-(revised)
+[License img]: https://img.shields.io/github/license/nafigator/php-bench?logoColor=333&color=teal
+[License src]: https://tldrlegal.com/license/bsd-3-clause-license-(revised)
+[Conventional commits src]: https://conventionalcommits.org
+[Conventional commits badge]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-teal.svg
